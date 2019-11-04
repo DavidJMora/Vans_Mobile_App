@@ -14,6 +14,12 @@ const store = createStore(
 );
 
 {
-  /* https://snack.expo.io/@react-navigation/redux-example-with-dynamic-title */
+  /*
+
+  https://snack.expo.io/@react-navigation/redux-example-with-dynamic-title
+
+  Note: Finish up creating the provider and store
+
+  */
 }
 export default store;

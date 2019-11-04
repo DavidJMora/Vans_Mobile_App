@@ -29,5 +29,5 @@ const VansNavigator = createStackNavigator({
   },
   initialRoute: "Login"
 });
-
+// nested for now just incase we want to pass it options
 export default createAppContainer(VansNavigator);
