@@ -7,11 +7,16 @@ export const login = employeeInfo => async dispatch => {
       payload: employeeInfo
     });
   } catch (error) {
-    console.log(error);
+    console.warn(error);
   }
 };
 
-export const logout = () => async dispatch => {};
+export const logout = () => async dispatch => {
+  dispatch({
+    type: AUTH_USER_LOGOUT,
+    payload: {}
+  });
+};
 //exp.errorRecovery
 //console.warn() throws a yellow box on the ipad
 //import {YellowBox} from 'react-native';

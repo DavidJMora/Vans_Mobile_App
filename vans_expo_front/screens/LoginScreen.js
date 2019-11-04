@@ -27,17 +27,41 @@
 
 // export default LoginScreen;
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet, TextInput, Button } from "react-native";
+import { connect } from "react-redux";
+import { login } from "../redux/actions/authUserActions";
 
-export class LoginScreen extends Component {
+class LoginScreen extends Component {
+  state = {
+    isAuthenticated: null,
+    loginForm: {
+      employeeID: "",
+      password: ""
+    }
+  };
+
+  componentDidMount() {
+    if (this.props.authUser.isAuthenticated) {
+      this.props.navigation.navigate(" ");
+    }
+    console.log(this.props.authUser.isAuthenticated);
+  }
+  handleOnChange = event => {
+    [event.target.name] = event.target.value;
+    this.setState({
+      loginForm
+    });
+  };
+  handleOnPress = event => {};
+
   render() {
     console.log(this.props.navigation);
     return (
       <View style={styles.screen}>
-        <TextInput placeHolder="EmployeeID" style={styles.input} />
-        <TextInput placeHolder="Password" style={styles.input} />
+        <TextInput placeHolder='EmployeeID' style={styles.input} />
+        <TextInput placeHolder='Password' style={styles.input} />
         <Button
-          title="Login"
+          title='Login'
           onPress={() => this.props.navigation.navigate("Admin")}
         />
       </View>
@@ -59,4 +83,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginScreen;
+const mapStateToProps = state => {
+  return {
+    authUser: state.authUser
+  };
+};
+export default connect(
+  mapStateToProps,
+  { login }
+)(LoginScreen);
