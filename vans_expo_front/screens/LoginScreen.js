@@ -33,37 +33,42 @@ import { login } from "../redux/actions/authUserActions";
 
 class LoginScreen extends Component {
   state = {
-    isAuthenticated: null,
+    isAuthenticated: false,
     loginForm: {
-      employeeID: "",
+      employee: "",
       password: ""
     }
   };
 
   componentDidMount() {
     if (this.props.authUser.isAuthenticated) {
-      this.props.navigation.navigate(" ");
+      this.props.navigation.navigate("");
     }
-    console.log(this.props.authUser.isAuthenticated);
+    console.log(`componentdidmount : `, this.props.authUser);
   }
   handleOnChange = event => {
-    [event.target.name] = event.target.value;
+    const { loginForm } = this.state;
+    loginForm[event.target.name] = event.target.value;
+    this.setState({ loginForm });
+  };
+  handleOnPress = () => {
     this.setState({
-      loginForm
+      isAuthenticated: true,
+      loginForm: {
+        employee: "",
+        password: ""
+      }
     });
   };
-  handleOnPress = event => {};
 
   render() {
-    console.log(this.props.navigation);
+    // console.log(this.props.navigation);
+    console.log("after render", this.props);
     return (
       <View style={styles.screen}>
         <TextInput placeHolder='EmployeeID' style={styles.input} />
         <TextInput placeHolder='Password' style={styles.input} />
-        <Button
-          title='Login'
-          onPress={() => this.props.navigation.navigate("Admin")}
-        />
+        <Button title='Login' onPress={this.handleOnPress} />
       </View>
     );
   }
