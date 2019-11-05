@@ -2,7 +2,8 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
-import { Ionicons } from "@expo/vector-icons";
+// import { Ionicons } from "@expo/vector-icons";
+
 /** https://docs.expo.io/versions/latest/guides/icons/#expovector-icons **/
 
 import LoginScreen from "../screens/LoginScreen";

@@ -1,35 +1,42 @@
 import React, { Component } from "react";
 // import { Image, Text, View, StyleSheet } from "react-native";
 
-import { AppLoading } from "expo";
+// import { AppLoading } from "expo";
 import AppContainer from "./navigation/VansNavigator";
-import * as Font from "expo-font";
+import store from "./redux/store/store";
+import { Provider } from "react-redux";
+// import * as Font from "expo-font";
 
 export default class App extends Component {
-  // state = {
-  //   fontLoaded: false
-  // };
-
-  // async componentDidMount() {
-  //   await Font.loadAsync({
-  //     "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
-  //     "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf")
-  //   });
-  // }
-
   render() {
-    // if (!this.state.isLoading) {
-    //   return (
-    //     <AppLoading
-    //       startAsync={this.fetchFont}
-    //       // create a function to handle isLoading
-    //       onFinish={() => this.setState({ fontLoaded: true })}
-    //     />
-    //   );
-    // }
-    return <AppContainer />;
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    );
   }
 }
+
+// state = {
+//   fontLoaded: false
+// };
+
+// async componentDidMount() {
+//   await Font.loadAsync({
+//     "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
+//     "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf")
+//   });
+// }
+
+// if (!this.state.isLoading) {
+//   return (
+//     <AppLoading
+//       startAsync={this.fetchFont}
+//       // create a function to handle isLoading
+//       onFinish={() => this.setState({ fontLoaded: true })}
+//     />
+//   );
+// }
 
 /*
   ****** I M P O R T A N T *******
