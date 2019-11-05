@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => {
     console.log("You've been connected to the database, Sir.")
   })
@@ -15,9 +15,6 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopo
     console.log(`MongoDB connection error: ${error}`);
     
   })
-
-let indexRouter = require('./src/routes/index');
-let usersRouter = require('./src/routes/users');
 
 const app = express();
 
@@ -31,8 +28,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', require('./src/routes/index'));
+app.use('/users', require('./src/routes/users'));
+app.use('/admin', require('./src/routes/admin'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
