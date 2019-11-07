@@ -51,4 +51,5 @@ const VansNavigator = createStackNavigator({
 //   initialRoute: "Login"
 // });
 // nested for now just incase we want to pass it options
+//what is going to be used for the navbar?
 export default createAppContainer(VansNavigator);
