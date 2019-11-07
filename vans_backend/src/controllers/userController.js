@@ -3,6 +3,7 @@ let authHelper = require('../utils/authHelper');
 
 module.exports = {
     userLogin: async (req, res) => {
+        console.log(req.body)
         try {
             let foundUser = await authHelper.findOneUser(req.body.employee_number)
             if(foundUser === 404) {

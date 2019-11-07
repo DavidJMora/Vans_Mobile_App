@@ -44,7 +44,7 @@ class LoginScreen extends Component {
     if (this.props.authUser.isAuthenticated) {
       this.props.navigation.navigate("Admin");
     }
-    console.log(`componentdidmount : `, this.props.authUser);
+    // console.log(`componentdidmount : `, this.props.authUser);
   }
   
   handleOnChange = (text, name) => {
@@ -80,7 +80,7 @@ class LoginScreen extends Component {
     /*
     TextInput=> https://docs.expo.io/versions/v35.0.0/react-native/textinput/
     */
-    console.log("after render", this.props);
+    // console.log("after render", this.props);
     return (
       <View style={styles.container}>
         <TextInput
