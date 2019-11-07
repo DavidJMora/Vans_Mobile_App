@@ -46,15 +46,13 @@ class LoginScreen extends Component {
     }
     console.log(`componentdidmount : `, this.props.authUser);
   }
-  handleOnChange = (event, name) => {
+  
+  handleOnChange = (text, name) => {
     const { loginForm } = this.state;
-    let { name, text } = event;
-    let data = text;
-
-    this.setState({
-      loginForm[name]: data
-    });
+    loginForm[name] = text;
+    this.setState({ loginForm });
   };
+
   successfullySignedIn = () => {
     this.setState({
       submitted: true,
@@ -87,15 +85,15 @@ class LoginScreen extends Component {
       <View style={styles.container}>
         <TextInput
           name="employee"
-          value={this.state.loginForm[employee]}
-          onChangeText={this.handleOnChange}
+          value={this.state.loginForm.employee}
+          onChangeText={text => this.handleOnChange(text, 'employee')}
           placeholder={"Username"}
           style={styles.input}
         />
         <TextInput
           name="password"
-          value={this.state.loginForm[password]}
-          onChangeText={this.handleOnChange}
+          value={this.state.loginForm.password}
+          onChangeText={text => this.handleOnChange(text, 'password')}
           placeholder={"Password"}
           secureTextEntry={true}
           style={styles.input}
