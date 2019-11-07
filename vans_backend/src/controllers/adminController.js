@@ -4,6 +4,8 @@ let ShoeStyle = require('../models/ShoeStyle');
 let Category = require('../models/Category');
 let faker = require('faker')
 
+//* All Methods here are to be used with Postman and Atlas in order to save time on frontend
+
 module.exports = {
     createProduct: (req, res) => {
         
