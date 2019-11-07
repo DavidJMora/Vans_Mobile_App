@@ -69,8 +69,9 @@ class LoginScreen extends Component {
         submitted: true
       },
       () => {
+        console.log(this.props.authUser.isAuthenticated)
         this.props.login(this.state.loginForm);
-        Alert.alert("Credentials", `${this.props.isAuthenticated}`);
+        Alert.alert("Credentials", `${this.props.authUser.isAuthenticated}`);
       }
     );
   };

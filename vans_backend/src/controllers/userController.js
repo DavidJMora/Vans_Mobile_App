@@ -12,7 +12,10 @@ module.exports = {
             if(comparedPassword === 409) {
                 throw 'Invalid password or username.'
             }
-            res.json('Login Successful')
+            res.status(200).json({
+                message: 'Login Successful',
+                foundUser
+            })
         } catch (error) {
             res.status(500).json({
                 message: error
