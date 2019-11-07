@@ -27,7 +27,7 @@
 
 // export default LoginScreen;
 import React, { Component } from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { Alert, View, StyleSheet, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
 import { login } from "../redux/actions/authUserActions";
 
@@ -46,10 +46,14 @@ class LoginScreen extends Component {
     }
     console.log(`componentdidmount : `, this.props.authUser);
   }
-  handleOnChange = event => {
+  handleOnChange = (event, name) => {
     const { loginForm } = this.state;
-    loginForm[event.target.name] = event.target.value;
-    this.setState({ loginForm });
+    let { name, text } = event;
+    let data = text;
+
+    this.setState({
+      loginForm[name]: data
+    });
   };
   successfullySignedIn = () => {
     this.setState({
@@ -60,10 +64,17 @@ class LoginScreen extends Component {
       }
     });
   };
-  handleOnPress = () => {
-    this.setState({
-      submitted: true
-    });
+
+  handleOnSubmit = () => {
+    this.setState(
+      {
+        submitted: true
+      },
+      () => {
+        this.props.login(this.state.loginForm);
+        Alert.alert("Credentials", `${this.props.isAuthenticated}`);
+      }
+    );
   };
 
   render() {
@@ -73,15 +84,38 @@ class LoginScreen extends Component {
     */
     console.log("after render", this.props);
     return (
-      <View style={styles.screen}>
+      <View style={styles.container}>
         <TextInput
-          placeHolder="EmployeeID"
+          name="employee"
+          value={this.state.loginForm[employee]}
+          onChangeText={this.handleOnChange}
+          placeholder={"Username"}
           style={styles.input}
-          onChange={this.handleOnChange}
         />
-        <TextInput placeHolder="Password" style={styles.input} />
-        <Button title="Login" onPress={this.handleOnPress} />
+        <TextInput
+          name="password"
+          value={this.state.loginForm[password]}
+          onChangeText={this.handleOnChange}
+          placeholder={"Password"}
+          secureTextEntry={true}
+          style={styles.input}
+        />
+
+        <Button
+          title={"Login"}
+          style={styles.input}
+          onPress={this.handleOnSubmit}
+        />
       </View>
+      // <View style={styles.screen}>
+      //   <TextInput
+      //     placeHolder="EmployeeID"
+      //     style={styles.input}
+      //     onChangeText={this.handleOnChange}
+      //   />
+      //   <TextInput placeHolder="Password" style={styles.input} />
+      //   <Button title="Login" onPress={this.handleOnSubmit} />
+      // </View>
     );
   }
 }
