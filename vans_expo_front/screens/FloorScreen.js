@@ -35,7 +35,7 @@ export class FloorScreen extends Component {
       <View style={styles.screen}>
         <Text> Floor Screen </Text>
         <Button
-          title="Login"
+          title='WTFFFFFFFF'
           onPress={() => this.props.navigation.navigate("Notifications")}
         />
       </View>

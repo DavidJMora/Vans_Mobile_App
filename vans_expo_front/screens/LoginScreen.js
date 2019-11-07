@@ -1,33 +1,5 @@
-// import React from "react";
-// import { View, TextInput, Button, StyleSheet } from "react-native";
-// const LoginScreen = props => {
-//   return (
-//     <View style={styles.screen}>
-//       <Text>Hello</Text>
-//       {/* <TextInput placeHolder="EmployeeID" style={styles.input} />
-//       <TextInput placeHolder="Password" style={styles.input} />
-//       <Button title="Login" /> */}
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center"
-//   }
-//   // input: {
-//   //   width: "20%",
-//   //   borderColor: "black",
-//   //   borderWidth: 1,
-//   //   padding: 10
-//   // }
-// });
-
-// export default LoginScreen;
 import React, { Component } from "react";
-import { Alert, View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
 import { login } from "../redux/actions/authUserActions";
 
@@ -42,11 +14,11 @@ class LoginScreen extends Component {
 
   componentDidMount() {
     if (this.props.authUser.isAuthenticated) {
-      this.props.navigation.navigate("Admin");
+      this.props.navigation.navigate("");
     }
-    // console.log(`componentdidmount : `, this.props.authUser);
+    console.log(`componentdidmount : `, this.props.authUser);
   }
-  
+
   handleOnChange = (text, name) => {
     const { loginForm } = this.state;
     loginForm[name] = text;
@@ -70,7 +42,7 @@ class LoginScreen extends Component {
       },
       () => {
         this.props.login(this.state.loginForm);
-        Alert.alert("Credentials", `${this.props.isAuthenticated}`);
+        this.props.navigation.navigate("Floor");
       }
     );
   };
@@ -81,19 +53,20 @@ class LoginScreen extends Component {
     TextInput=> https://docs.expo.io/versions/v35.0.0/react-native/textinput/
     */
     // console.log("after render", this.props);
+
     return (
       <View style={styles.container}>
         <TextInput
-          name="employee_number"
+          name='employee_number'
           value={this.state.loginForm.employee_number}
-          onChangeText={text => this.handleOnChange(text, 'employee_number')}
+          onChangeText={text => this.handleOnChange(text, "employee_number")}
           placeholder={"Username"}
           style={styles.input}
         />
         <TextInput
-          name="password"
+          name='password'
           value={this.state.loginForm.password}
-          onChangeText={text => this.handleOnChange(text, 'password')}
+          onChangeText={text => this.handleOnChange(text, "password")}
           placeholder={"Password"}
           secureTextEntry={true}
           style={styles.input}
@@ -105,15 +78,6 @@ class LoginScreen extends Component {
           onPress={this.handleOnSubmit}
         />
       </View>
-      // <View style={styles.screen}>
-      //   <TextInput
-      //     placeHolder="EmployeeID"
-      //     style={styles.input}
-      //     onChangeText={this.handleOnChange}
-      //   />
-      //   <TextInput placeHolder="Password" style={styles.input} />
-      //   <Button title="Login" onPress={this.handleOnSubmit} />
-      // </View>
     );
   }
 }
