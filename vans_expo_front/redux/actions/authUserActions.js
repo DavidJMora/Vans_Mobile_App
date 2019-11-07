@@ -5,10 +5,8 @@ export const login = employeeInfo => async dispatch => {
   console.log(employeeInfo, 'wonderful')
   try {
     let success = await Axios.post("/users/login", employeeInfo);
-    console.log(success, 'failure')
     dispatch(setAuthSuccessUser(employeeInfo));
     const { user } = success.data;
-    console.log(user, 'hola');
     return Promise.resolve({ user });
   } catch (error) {
     console.warn(error);
@@ -19,7 +17,6 @@ export const login = employeeInfo => async dispatch => {
 
 // assist the async
 export const setAuthSuccessUser = employeeInfo => dispatch => {
-  console.log(employeeInfo, 'greeen')
   dispatch({
     type: AUTH_LOGIN_SUCCESSFUL,
     payload: employeeInfo

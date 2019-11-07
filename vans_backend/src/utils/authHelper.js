@@ -15,7 +15,6 @@ async function findOneUser(employee_number) {
 }
 
 const comparePassword = (incomingPassword, userPassword) => {
-    console.log(incomingPassword, userPassword)
     if(incomingPassword === userPassword) {
         return true
     } else {

@@ -34,7 +34,7 @@ import { login } from "../redux/actions/authUserActions";
 class LoginScreen extends Component {
   state = {
     loginForm: {
-      employee: "",
+      employee_number: "",
       password: ""
     },
     submitted: false
@@ -57,7 +57,7 @@ class LoginScreen extends Component {
     this.setState({
       submitted: true,
       loginForm: {
-        employee: "",
+        employee_number: "",
         password: ""
       }
     });
@@ -84,9 +84,9 @@ class LoginScreen extends Component {
     return (
       <View style={styles.container}>
         <TextInput
-          name="employee"
-          value={this.state.loginForm.employee}
-          onChangeText={text => this.handleOnChange(text, 'employee')}
+          name="employee_number"
+          value={this.state.loginForm.employee_number}
+          onChangeText={text => this.handleOnChange(text, 'employee_number')}
           placeholder={"Username"}
           style={styles.input}
         />
