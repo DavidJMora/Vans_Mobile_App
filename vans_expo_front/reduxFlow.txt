@@ -1,0 +1,107 @@
+
+**********************************************************
+<== Redux Path Flow ==>
+* ./redux ==>
+*       1- ./actionTypes ==>
+*         2-        ./actions ==>
+*           3-              ./reducers ==>
+*             4-                    ./reducers/index
+* <== {connect} to { Component } ==>
+*
+* React.Component
+* ./screens ==>
+*               connect(mapStateTprops,{ })(classComponent)
+*                       - console.log(this.props;)
+*
+* note { } : pass the async'd middleware function you want to use
+***********************************************************
+
+        R E D U X  F L O W   &&   P A T T E R N
+
+        Applicable Paths:  [ COMPONENTS && SCREENS ]
+
+        VScode extention: "ES7 REACT/RN/REDUX"  SNIPPET : "RNCR"
+
+screen.js
+component.js
+
+        import React /  { connect }  / { View, Text }
+        from   react /  react-redux  /  react-native
+
+
+1 *  - class App extends component ==>        componentDidMount()
+                                          handlers() => this.setState({})
+
+2 *  - { connect }                 ==>      connects to the instantiated
+                                          ( state = {}  || state =initialState )
+                                                    "Global state"
+
+3 *  - mapStateToProps
+        connect(mapStateToProps)   ==>     map to set new "state" of reducer
+                                          to update "global state" || { store }
+
+4 *  - { actions }
+        from ./actions             ==>     handles logic and functions
+                                                creates action
+                                           what is actually being dispatched
+
+
+5 *  - export default connect(     ==>    this.props.state.{ ./store/index }
+        mapStateToProps,                   ** combineReducers = {
+          { actions }                             authUser: authReducer,
+         )(component)                             msgHandler: msgReducer
+                                                }
+                                                check your state :
+                                                console.log(this.props.....)
+
+
+
+
+
+
+==> R E D U X _PATHS <==
+
+./actionTypes  ==>      nothing but a long ass list of actionTypes to chose from
+                             loadup ./reducers with actionTypes
+
+./reducers     ==>   for each reducer you need to
+                        import { SOME_TYPE_OF_ACTION } from ./actionTypes
+                        const intialState = {
+                                something: {
+                                  someOtherThing: ""
+                                }
+                         }
+
+                {/* < I left this part alone for now to avoid confusion > */}
+
+                        - contains many <reducers>.js ,
+                        in ES6 we are able use index.js
+                        as pointer to be the root file to run.
+
+
+
+                        dispatch({
+                        type: * from ./actionTypes *,
+                        payload
+                        })
+
+
+                    * choose type of action from ./actionTypes
+                    * loadup what you want the dispatch to the store
+
+./actions     ==>   - contains functions or async func()
+                      dispatch({ action.type, payload }) to
+                      update state that was instantiated in store.js
+
+
+
+
+
+
+./store       ==>   -  creates the store
+                        combines reducers
+                        applyMiddleware (async helpers)
+                        contains instantiated state
+                        initialState = {}
+
+** state gets updated by dispatch **

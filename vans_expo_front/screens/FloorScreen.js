@@ -22,6 +22,14 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 
 export class FloorScreen extends Component {
+  state = {};
+
+  componentDidMount() {}
+
+  handleOnSubmit = () => {};
+
+  someFunction = () => {};
+
   render() {
     return (
       <View style={styles.screen}>

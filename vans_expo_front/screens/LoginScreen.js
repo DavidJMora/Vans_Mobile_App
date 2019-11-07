@@ -33,16 +33,16 @@ import { login } from "../redux/actions/authUserActions";
 
 class LoginScreen extends Component {
   state = {
-    isAuthenticated: false,
     loginForm: {
       employee: "",
       password: ""
-    }
+    },
+    submitted: false
   };
 
   componentDidMount() {
     if (this.props.authUser.isAuthenticated) {
-      this.props.navigation.navigate("");
+      this.props.navigation.navigate("Admin");
     }
     console.log(`componentdidmount : `, this.props.authUser);
   }
@@ -51,24 +51,36 @@ class LoginScreen extends Component {
     loginForm[event.target.name] = event.target.value;
     this.setState({ loginForm });
   };
-  handleOnPress = () => {
+  successfullySignedIn = () => {
     this.setState({
-      isAuthenticated: true,
+      submitted: true,
       loginForm: {
         employee: "",
         password: ""
       }
     });
   };
+  handleOnPress = () => {
+    this.setState({
+      submitted: true
+    });
+  };
 
   render() {
     // console.log(this.props.navigation);
+    /*
+    TextInput=> https://docs.expo.io/versions/v35.0.0/react-native/textinput/
+    */
     console.log("after render", this.props);
     return (
       <View style={styles.screen}>
-        <TextInput placeHolder='EmployeeID' style={styles.input} />
-        <TextInput placeHolder='Password' style={styles.input} />
-        <Button title='Login' onPress={this.handleOnPress} />
+        <TextInput
+          placeHolder="EmployeeID"
+          style={styles.input}
+          onChange={this.handleOnChange}
+        />
+        <TextInput placeHolder="Password" style={styles.input} />
+        <Button title="Login" onPress={this.handleOnPress} />
       </View>
     );
   }

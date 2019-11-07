@@ -1,6 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "../reducers";
+/*
+  - rootReducer is basically calling index without having to define it
+  - in ES6
+*/
 
 const middleware = [thunk];
 
