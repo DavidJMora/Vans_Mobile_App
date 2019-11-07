@@ -1,5 +1,6 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
 // import { Ionicons } from "@expo/vector-icons";
@@ -30,5 +31,24 @@ const VansNavigator = createStackNavigator({
   },
   initialRoute: "Login"
 });
+
+// const VansDrawer = DrawerNavigator({
+//   Login: {
+//     screen: LoginScreen
+//   },
+//   Floor: {
+//     screen: FloorScreen
+//   },
+//   Notifications: {
+//     screen: NotificationScreen
+//   },
+//   Stock: {
+//     screen: StockScreen
+//   },
+//   Admin: {
+//     screen: AdminScreen
+//   },
+//   initialRoute: "Login"
+// });
 // nested for now just incase we want to pass it options
 export default createAppContainer(VansNavigator);
