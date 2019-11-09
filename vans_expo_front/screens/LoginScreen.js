@@ -16,7 +16,7 @@ class LoginScreen extends Component {
     if (this.props.authUser.isAuthenticated) {
       this.props.navigation.navigate("");
     }
-    console.log(`componentdidmount : `, this.props.authUser);
+    // console.log(`componentdidmount : `, this.props.authUser);
   }
 
   handleOnChange = (text, name) => {
@@ -41,9 +41,11 @@ class LoginScreen extends Component {
         submitted: true
       },
       () => {
-        console.log(this.props.authUser.isAuthenticated)
-        this.props.login(this.state.loginForm);
-        this.props.navigation.navigate("Floor");
+        this.props.login(this.state.loginForm)
+          .then(() => {
+            console.log(this.props.authUser)
+            this.props.navigation.navigate("Floor");
+            })
       }
     );
   };

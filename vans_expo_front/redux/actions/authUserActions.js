@@ -2,14 +2,11 @@ import { AUTH_LOGIN_SUCCESSFUL, AUTH_USER_LOGOUT } from "../actionTypes/types";
 import Axios from "../../services/Axios";
 // import axios from 'axios'
 export const login = employeeInfo => async dispatch => {
-  console.log(employeeInfo, "wonderful");
   let success;
   try {
     success = await Axios.post("/users/login", employeeInfo);
-    dispatch(setAuthSuccessUser(employeeInfo));
-
-    console.log("hello ", success.data);
-    return Promise.resolve(success.data);
+    dispatch(setAuthSuccessUser(success.data));
+    return Promise.resolve(success.data.message);
   } catch (error) {
     console.warn(error);
     return Promise.reject(error);

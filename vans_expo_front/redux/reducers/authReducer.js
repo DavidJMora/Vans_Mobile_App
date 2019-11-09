@@ -14,9 +14,15 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case AUTH_LOGIN_SUCCESSFUL:
+      const { foundUser } = payload;
       return {
         isAuthenticated: true,
-        user: payload
+        user: {
+          employee_number: foundUser.employee_number,
+          jobTitle: foundUser.jobTitle,
+          firstName: foundUser.firstName,
+          lastName: foundUser.lastName
+        }
       };
     case AUTH_USER_LOGOUT:
       return {
