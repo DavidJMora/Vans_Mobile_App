@@ -1,94 +1,71 @@
 import React from "react";
-import { Text, Animated, Easing } from "react-native";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { Text } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
-
-import NotificationScreen from "../screens/NotificationScreen";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import DashboardScreen from "../screens/DashboardScreen";
+import Notifications from "../screens/Notifications";
 import LoginScreen from "../screens/LoginScreen";
-import AdminScreen from "../screens/AdminScreen";
-import FloorScreen from "../screens/FloorScreen";
-import StockScreen from "../screens/StockScreen";
+import Admin from "../screens/Admin";
+import Floor from "../screens/Floor";
+import Stock from "../screens/Stock";
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
-// import { Ionicons } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons";
 
 /** https://docs.expo.io/versions/latest/guides/icons/#expovector-icons **/
 
 // nested for now just incase we want to pass it options
 //what is going to be used for the navbar?
-const noTransitionConfig = () => ({
-  transitionSpec: {
-    duration: 0,
-    timing: Animated.timing,
-    easing: Easing.step0
-  }
-});
 
 // drawer stack
-const DrawerStack = DrawerNavigator(
+
+const DashboardTabNavigator = createBottomTabNavigator(
   {
-    notificationScreen: { screen: NotificationScreen },
-    adminScreen: { screen: AdminScreen },
-    floorScreen: { screen: FloorScreen },
-    stockScreen: { screen: StockScreen }
+    Admin,
+    Floor,
+    Stock,
+    Notifications
   },
   {
-    gesturesEnabled: false,
-    contentComponent: DrawerContainer
-  }
-);
-// https://reactnavigation.org/docs/en/drawer-based-navigation.html
-const drawerButton = navigation => (
-  <Text
-    style={{ padding: 5, color: "white" }}
-    onPress={() => {
-      navigation.toggleDrawer();
-    }}
-  >
-    Menu
-  </Text>
-);
-const DrawerNavigation = StackNavigator(
-  {
-    DrawerStack: { screen: DrawerStack }
-  },
-  {
-    headerMode: "float",
-    navigationOptions: ({ navigation }) => ({
-      headerStyle: { backgroundColor: "#4C3E54" },
-      title: "Welcome!",
-      headerTintColor: "white",
-      gesturesEnabled: false,
-      headerLeft: drawerButton(navigation)
-    })
-  }
-);
-const LoginStack = StackNavigator(
-  {
-    loginScreen: { screen: LoginScreen }
-  },
-  {
-    headerMode: "float",
-    navigationOptions: {
-      headerStyle: { backgroundColor: "#E73536" },
-      title: "You are not logged in",
-      headerTintColor: "white"
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        headerTitle: routeName
+      };
     }
   }
 );
-const VansNav = StackNavigator(
+const DashboardStackNavigator = createStackNavigator(
   {
-    loginStack: { screen: LoginStack },
-    drawerStack: { screen: DrawerNavigation }
+    DashboardTabNavigator: DashboardTabNavigator
   },
   {
-    // Default config for all screens
-    headerMode: "none",
-    title: "Main",
-    initialRouteName: "loginStack",
-    transitionConfig: noTransitionConfig
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Text
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
   }
 );
 
-export default createAppContainer(VansNav);
+const AppDrawerNavigator = createDrawerNavigator({
+  Dashboard: {
+    screen: DashboardStackNavigator
+  }
+});
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Login: { screen: LoginScreen },
+  Dashboard: { screen: AppDrawerNavigator }
+});
+
+export default createAppContainer(AppSwitchNavigator);

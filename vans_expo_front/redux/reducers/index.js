@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import msgReducer from "./msgReducer";
 import dataPassingReducer from "./dataPassingReducer";
-import navReducer from "./navReducer";
+
 // import stockReducer from "./stockReducer";
 // import floorReducer from "./floorReducer";
 
@@ -14,8 +14,8 @@ import navReducer from "./navReducer";
 export default combineReducers({
   authUser: authReducer,
   message: msgReducer,
-  passedData: dataPassingReducer,
-  nav: navReducer
+  passedData: dataPassingReducer
+
   // stockUser: stockReducer
   // floorUser: floorReducer
 });

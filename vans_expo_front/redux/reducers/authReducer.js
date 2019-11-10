@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case AUTH_LOGIN_SUCCESSFUL:
-      console.log(payload, 'line 12 authReducer')
+      console.log(payload, "line 12 authReducer");
       const { foundUser } = payload;
       return {
         isAuthenticated: true,

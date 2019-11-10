@@ -19,16 +19,15 @@
 // export default StockScreen;
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
-import { connect } from 'react-redux';
-import { getQueue } from '../redux/actions/dataPassingActions';
+import { connect } from "react-redux";
+import { getQueue } from "../redux/actions/dataPassingActions";
 
 class StockScreen extends Component {
-
   // componentDidUpdate(prevProps) {
   // }
 
   render() {
-    console.log(this.props.queue, 'b,lyhdhgrt')
+    console.log(this.props.queue, "b,lyhdhgrt");
     return (
       <View style={styles.screen}>
         <Text> StockScreen </Text>
@@ -50,10 +49,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log(state, 'state')
+  console.log(state, "state");
   return {
     queue: state.queue
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { getQueue })(StockScreen);
+export default connect(
+  mapStateToProps,
+  { getQueue }
+)(StockScreen);

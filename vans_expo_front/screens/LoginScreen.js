@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
 import { login } from "../redux/actions/authUserActions";
-import { withNavigation } from "react-navigation";
 
 class LoginScreen extends Component {
   state = {
@@ -44,7 +43,7 @@ class LoginScreen extends Component {
       },
       () => {
         this.props.login(this.state.loginForm).then(() => {
-          this.props.navigation.navigate("drawerStack");
+          this.props.navigation.navigate("Floor");
         });
       }
     );
