@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
 import LoginScreen from "../screens/LoginScreen";
 
-const LoginStack = createStackNavigator(
+const AuthStack = createStackNavigator(
   {
     loginScreen: { screen: LoginScreen }
   },
@@ -15,4 +15,4 @@ const LoginStack = createStackNavigator(
   }
 );
 
-export default LoginStack;
+export default AuthStack;

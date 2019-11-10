@@ -15,7 +15,7 @@ const DrawerStack = createDrawerNavigator({
 
 const DrawerNavigation = createStackNavigator(
   {
-    drawerStack: { screen: DrawerStack }
+    DrawerStack: { screen: DrawerStack }
   },
   {
     headerMode: "float",
