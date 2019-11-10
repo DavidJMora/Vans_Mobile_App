@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import msgReducer from "./msgReducer";
-import dataPassingReducer from './dataPassingReducer';
+import dataPassingReducer from "./dataPassingReducer";
+
 // import stockReducer from "./stockReducer";
 // import floorReducer from "./floorReducer";
 
@@ -14,6 +15,7 @@ export default combineReducers({
   authUser: authReducer,
   message: msgReducer,
   passedData: dataPassingReducer
+
   // stockUser: stockReducer
   // floorUser: floorReducer
 });

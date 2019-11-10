@@ -53,9 +53,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
+  console.log(state, "state");
   return {
     queue: state.queue
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { getQueue })(StockScreen);
+export default connect(
+  mapStateToProps,
+  { getQueue }
+)(StockScreen);

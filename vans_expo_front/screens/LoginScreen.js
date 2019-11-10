@@ -42,10 +42,9 @@ class LoginScreen extends Component {
         submitted: true
       },
       () => {
-        this.props.login(this.state.loginForm)
-          .then(() => {
-            this.props.navigation.navigate("Floor");
-            })
+        this.props.login(this.state.loginForm).then(() => {
+          this.props.navigation.navigate("Floor");
+        });
       }
     );
   };
