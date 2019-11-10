@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Image, Text, View, StyleSheet } from "react-native";
 
 // import { AppLoading } from "expo";
-import AppContainer from "./navigation/VansNavigator";
+import OffTheWall from "./navigation/VansNavigator";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
 // import * as Font from "expo-font";
@@ -11,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer />
+        <OffTheWall />
       </Provider>
     );
   }

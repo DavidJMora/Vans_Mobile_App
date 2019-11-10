@@ -1,5 +1,7 @@
-import { createAppContainer } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import LoginStack from "./LoginStack";
+import DrawerNavigation from "./DrawerStack";
 
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
@@ -7,49 +9,19 @@ import { createStackNavigator } from "react-navigation-stack";
 
 /** https://docs.expo.io/versions/latest/guides/icons/#expovector-icons **/
 
-import LoginScreen from "../screens/LoginScreen";
-import AdminScreen from "../screens/AdminScreen";
-import FloorScreen from "../screens/FloorScreen";
-import NotificationScreen from "../screens/NotificationScreen";
-import StockScreen from "../screens/StockScreen";
-
-const VansNavigator = createStackNavigator({
-  Login: {
-    screen: LoginScreen
-  },
-  Floor: {
-    screen: FloorScreen
-  },
-  Notifications: {
-    screen: NotificationScreen
-  },
-  Stock: {
-    screen: StockScreen
-  },
-  Admin: {
-    screen: AdminScreen
-  },
-  initialRoute: "Login"
-});
-
-// const VansDrawer = DrawerNavigator({
-//   Login: {
-//     screen: LoginScreen
-//   },
-//   Floor: {
-//     screen: FloorScreen
-//   },
-//   Notifications: {
-//     screen: NotificationScreen
-//   },
-//   Stock: {
-//     screen: StockScreen
-//   },
-//   Admin: {
-//     screen: AdminScreen
-//   },
-//   initialRoute: "Login"
-// });
 // nested for now just incase we want to pass it options
 //what is going to be used for the navbar?
-export default createAppContainer(VansNavigator);
+
+const Stacked = createStackNavigator(
+  {
+    loginStack: { screen: LoginStack },
+    drawerStack: { screen: DrawerNavigation }
+  },
+  {
+    headerMode: "none",
+    title: "Main",
+    initialRouteName: "loginStack"
+  }
+);
+const OffTheWall = createAppContainer(Stacked);
+export default OffTheWall;
