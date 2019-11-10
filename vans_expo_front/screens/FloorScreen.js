@@ -31,11 +31,12 @@ export class FloorScreen extends Component {
   someFunction = () => {};
 
   render() {
+    console.log("hello from floor", this.props);
     return (
       <View style={styles.screen}>
         <Text> Floor Screen </Text>
         <Button
-          title='WTFFFFFFFF'
+          title="WTFFFFFFFF"
           onPress={() => this.props.navigation.navigate("Notifications")}
         />
       </View>
@@ -51,3 +52,7 @@ const styles = StyleSheet.create({
   }
 });
 export default FloorScreen;
+/**
+ *  floorscreen =>
+ *
+ */

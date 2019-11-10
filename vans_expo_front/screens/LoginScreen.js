@@ -9,7 +9,8 @@ class LoginScreen extends Component {
       employee_number: "",
       password: ""
     },
-    submitted: false
+    submitted: false,
+    isLoading: false
   };
 
   componentDidMount() {
@@ -41,7 +42,7 @@ class LoginScreen extends Component {
         submitted: true
       },
       () => {
-        console.log(this.props.authUser.isAuthenticated)
+        console.log(this.props.authUser.isAuthenticated);
         this.props.login(this.state.loginForm);
         this.props.navigation.navigate("Floor");
       }
@@ -53,19 +54,18 @@ class LoginScreen extends Component {
     /*
     TextInput=> https://docs.expo.io/versions/v35.0.0/react-native/textinput/
     */
-    // console.log("after render", this.props);
 
     return (
       <View style={styles.container}>
         <TextInput
-          name='employee_number'
+          name="employee_number"
           value={this.state.loginForm.employee_number}
           onChangeText={text => this.handleOnChange(text, "employee_number")}
           placeholder={"Username"}
           style={styles.input}
         />
         <TextInput
-          name='password'
+          name="password"
           value={this.state.loginForm.password}
           onChangeText={text => this.handleOnChange(text, "password")}
           placeholder={"Password"}
