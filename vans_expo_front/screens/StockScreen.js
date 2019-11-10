@@ -21,22 +21,25 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { connect } from 'react-redux';
 import { getQueue } from '../redux/actions/dataPassingActions';
+import { Card } from 'react-native-elements'
 
 class StockScreen extends Component {
 
-  // componentDidUpdate(prevProps) {
-  // }
-
   render() {
+
+    const { queue } = this.props.passedData;
+
     console.log(this.props.queue, 'b,lyhdhgrt')
     return (
-      <View style={styles.screen}>
-        <Text> StockScreen </Text>
-        <Button
-          title="Check Notifications"
-          onPress={() => this.props.navigation.navigate("Notifications")}
-        />
-      </View>
+      <Card>
+        <View style={styles.screen}>
+          <Text> StockScreen </Text>
+          <Button
+            title="Check Notifications"
+            onPress={() => this.props.navigation.navigate("Notifications")}
+          />
+        </View>
+      </Card> 
     );
   }
 }
@@ -50,7 +53,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log(state, 'state')
   return {
     queue: state.queue
   }

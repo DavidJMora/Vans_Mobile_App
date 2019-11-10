@@ -9,11 +9,9 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case AUTH_LOGIN_SUCCESSFUL:
-      console.log(payload, 'line 12 authReducer')
-      const { foundUser } = payload;
       return {
         isAuthenticated: true,
-        user: action.payload
+        user: payload
       };
     case AUTH_USER_LOGOUT:
       return {

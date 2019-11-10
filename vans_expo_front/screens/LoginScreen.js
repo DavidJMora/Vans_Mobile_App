@@ -62,7 +62,7 @@ class LoginScreen extends Component {
           name="employee_number"
           value={this.state.loginForm.employee_number}
           onChangeText={text => this.handleOnChange(text, "employee_number")}
-          placeholder={"Username"}
+          placeholder={"Employee Number"}
           style={styles.input}
         />
         <TextInput
