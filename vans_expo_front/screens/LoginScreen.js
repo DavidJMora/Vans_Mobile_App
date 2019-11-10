@@ -43,7 +43,6 @@ class LoginScreen extends Component {
       () => {
         this.props.login(this.state.loginForm)
           .then(() => {
-            console.log(this.props.authUser)
             this.props.navigation.navigate("Floor");
             })
       }
