@@ -36,8 +36,8 @@ export class FloorScreen extends Component {
       <View style={styles.screen}>
         <Text> Floor Screen </Text>
         <Button
-          title="WTFFFFFFFF"
-          onPress={() => this.props.navigation.navigate("Notifications")}
+          title='To Stock Screen'
+          onPress={() => this.props.navigation.navigate("Stock")}
         />
       </View>
     );

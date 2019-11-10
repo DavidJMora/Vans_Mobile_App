@@ -1,6 +1,5 @@
 import {
   AUTH_LOGIN_FAILURE,
-  AUTH_LOGIN_SUCCESSFUL
 } from "../actionTypes/types";
 
 const initialState = {
@@ -18,14 +17,6 @@ export default function(state = initialState, action) {
         serverMessage: action.payload,
         messageStyle: {
           //   fontColorStyle: "#f44336",
-          //   dynamicClassName: "App"
-        }
-      };
-    case AUTH_LOGIN_SUCCESSFUL:
-      return {
-        serverMessage: action.payload,
-        messageStyle: {
-          //   fontColorStyle: "#3F51B5",
           //   dynamicClassName: "App"
         }
       };
