@@ -12,16 +12,26 @@ import DrawerNavigation from "./DrawerStack";
 // nested for now just incase we want to pass it options
 //what is going to be used for the navbar?
 
-const Stacked = createStackNavigator(
-  {
-    loginStack: { screen: LoginStack },
-    drawerStack: { screen: DrawerNavigation }
+// const RootStack = createStackNavigator(
+//   {
+//     loginStack: { screen: LoginStack },
+//     drawerStack: { screen: DrawerNavigation }
+//   },
+//   {
+//     headerMode: "none",
+//     title: "Main",
+//     initialRouteName: "loginStack"
+//   }
+// );
+const App = createSwitchNavigator({
+  Loading: {
+    screen: Example
   },
-  {
-    headerMode: "none",
-    title: "Main",
-    initialRouteName: "loginStack"
+  Auth: {
+    screen: Example
+  },
+  App: {
+    screen: Example
   }
-);
-const OffTheWall = createAppContainer(Stacked);
-export default OffTheWall;
+});
+export default createAppContainer(App);
