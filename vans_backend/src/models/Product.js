@@ -11,10 +11,10 @@ let ProductSchema = new Schema ({
     description: { type: String, default: ''},
     image: { type: String, default: '' },
     size: { type: Number, default: '' },
-    user: [{
-        sentBy: { type: Schema.Types.ObjectId, ref: 'User'},
-        receivedBy: { type: Schema.Types.ObjectId, ref: 'User'}
-    }],
+    user: {
+        sentBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
+        receivedBy: { type: Schema.Types.ObjectId, ref: 'User', default: null }
+    },
     timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')}
 })
 

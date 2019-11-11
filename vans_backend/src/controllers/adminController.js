@@ -3,6 +3,7 @@ let User = require('../models/User');
 let ShoeStyle = require('../models/ShoeStyle');
 let Category = require('../models/Category');
 let faker = require('faker')
+let Queue = require('../models/Queue');
 
 //* All Methods here are to be used with Postman and Atlas in order to save time on frontend
 
@@ -60,6 +61,14 @@ module.exports = {
         newUser.save()
 
         res.json('User Created')
+    },
+    createQueue: (req, res) => {
+
+        let newQueue = new Queue();
+
+        newQueue.save();
+
+        res.json('Queue Created')
     }
 }
 
