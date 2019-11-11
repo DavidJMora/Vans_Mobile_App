@@ -18,4 +18,4 @@ let ProductSchema = new Schema ({
     timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')}
 })
 
-module.exports = mongoose.model('product', ProductSchema)
+module.exports = mongoose.model('Product', ProductSchema)
