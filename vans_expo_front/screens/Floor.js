@@ -20,8 +20,10 @@
 // export default FloorScreen;
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
+import { connect } from 'react-redux'
+import { updateStockList } from '../redux/actions/dataPassingActions';
 
-export class FloorScreen extends Component {
+class FloorScreen extends Component {
   state = {};
 
   componentDidMount() {}
@@ -31,13 +33,13 @@ export class FloorScreen extends Component {
   someFunction = () => {};
 
   render() {
-    console.log("hello from floor", this.props);
+    
     return (
       <View style={styles.screen}>
         <Text> Floor Screen </Text>
         <Button
-          title='To Stock Screen'
-          onPress={() => this.props.navigation.navigate("Stock")}
+          title='Add Fake Stock'
+          onPress={() => this.props.updateStockList({id: 4, title: 'added'})}
         />
       </View>
     );
@@ -51,7 +53,15 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
-export default FloorScreen;
+
+const mapStateToProps = state => {
+
+  return {
+    passedData: state.passedData
+  };
+};
+
+export default connect(mapStateToProps, { updateStockList })(FloorScreen);
 /**
  *  floorscreen =>
  *

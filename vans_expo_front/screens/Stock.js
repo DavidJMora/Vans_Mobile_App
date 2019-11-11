@@ -21,26 +21,52 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { connect } from 'react-redux';
 import { getQueue } from '../redux/actions/dataPassingActions';
-import { Card } from 'react-native-elements'
+import { Card, ListItem } from 'react-native-elements'
 
 class StockScreen extends Component {
 
+  state = {
+    queue: []
+  };
+
+  componentDidMount() {
+
+    this.setState({
+      queue: [...this.props.passedData.queue]
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevState, 'prevState')
+    console.log(prevProps, 'prevProps')
+    if(prevProps.passedData.queue !== this.props.passedData.queue) {
+      console.log("hello you've made it")
+      console.log(prevProps.passedData.queue)
+      console.log(this.state.queue)
+    }
+  }
+
   render() {
 
-    const { queue } = this.props.passedData;
-
-    console.log(this.props.queue, 'b,lyhdhgrt')
+    let queueCards = (
+      <Card title='Shoes On Queue'>
+        {
+          this.state.queue.map((card) => {
+            return (
+              <ListItem
+                key={card.id}
+                title={card.title}
+                bottomDivider
+              />
+            );
+          })
+        }
+      </Card>
+    )
+    
     return (
-      <Card>
-        <View style={styles.screen}>
-          <Text> StockScreen </Text>
-          <Button
-            title="Check Notifications"
-            onPress={() => this.props.navigation.navigate("Notifications")}
-          />
-        </View>
-      </Card> 
-    );
+      queueCards
+    )
   }
 }
 
@@ -53,13 +79,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log(state, "state");
+
   return {
-    queue: state.queue
+    passedData: state.passedData
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getQueue }
-)(StockScreen);
+export default connect(mapStateToProps, { getQueue })(StockScreen);
