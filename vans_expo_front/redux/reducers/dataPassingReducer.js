@@ -29,11 +29,8 @@ import { GET_STOCK_LIST, UPDATE_STOCK_LIST, DELETE_ITEM_FROM_LIST, COMPLETE_ITEM
 
 const initialState = {
   //* queue will be where list for product will be stored and manipulated based on action.
-  queue: [
-    {id: 1, title: 'One'},
-    {id: 2, title: 'Two'},
-    {id: 3, title: 'Three'}
-  ],
+  queue: [],
+  queueId: '',
   //* for later when we send messages back based on button selected from stock
   notifications: {
     key: 'blue'
@@ -44,9 +41,10 @@ export default function(state = initialState, action) {
   switch(action.type) {
     
     case GET_STOCK_LIST:
-
       return {
-        ...state
+        ...state,
+        queue: action.payload.items,
+        queueId: action.payload._id
       }
     
     case UPDATE_STOCK_LIST:

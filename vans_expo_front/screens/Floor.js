@@ -39,7 +39,7 @@ class FloorScreen extends Component {
         <Text> Floor Screen </Text>
         <Button
           title='Add Fake Stock'
-          onPress={() => this.props.updateStockList({id: 4, title: 'added'})}
+          onPress={() => this.props.updateStockList({id: 4, title: 'Four'})}
         />
       </View>
     );

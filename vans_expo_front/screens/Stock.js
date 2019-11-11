@@ -30,10 +30,20 @@ class StockScreen extends Component {
   };
 
   componentDidMount() {
-
-    this.setState({
-      queue: [...this.props.passedData.queue]
-    })
+    this.props.getQueue()
+    .then( queue => {
+      // console.log(queue, 'stock line 36')
+      this.setState({
+        queue: queue
+      })
+      // console.log(this.props, 'line 33')
+        // console.log(this.state, 'line 40')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      // console.log(this.state.queue, 'line 45')
+    // console.log(this.props.getQueue(), 'stock line 42')
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,8 +51,8 @@ class StockScreen extends Component {
     console.log(prevProps, 'prevProps')
     if(prevProps.passedData.queue !== this.props.passedData.queue) {
       console.log("hello you've made it")
-      console.log(prevProps.passedData.queue)
-      console.log(this.state.queue)
+      // console.log(prevProps.passedData.queue)
+      // console.log(this.state.queue)
     }
   }
 
@@ -51,11 +61,16 @@ class StockScreen extends Component {
     let queueCards = (
       <Card title='Shoes On Queue'>
         {
-          this.state.queue.map((card) => {
+          this.state.queue.map((card, index) => {
+            // {console.log(card, index, 'line 64')}
+            // {console.log(this.state.queue, 'line 66')}
+            // let { items } = card;
             return (
               <ListItem
-                key={card.id}
-                title={card.title}
+                key={index}
+                title={card.description}
+                leftAvatar={{ source: {uri: card.image}}}
+                subtitle={card.product}
                 bottomDivider
               />
             );
