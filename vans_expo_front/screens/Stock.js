@@ -64,13 +64,13 @@ class StockScreen extends Component {
           this.state.queue.map((card, index) => {
             // {console.log(card, index, 'line 64')}
             // {console.log(this.state.queue, 'line 66')}
-            // let { items } = card;
+            {console.log(card.size, 'line 67 stock')}
             return (
               <ListItem
                 key={index}
                 title={card.description}
                 leftAvatar={{ source: {uri: card.image}}}
-                subtitle={card.product}
+                subtitle={card.size.toString()}
                 bottomDivider
               />
             );

@@ -1,7 +1,5 @@
 let Queue = require('../models/Queue');
 let Product = require('../models/Product');
-let TempProduct = require('../models/TempProduct');
-let controllerHelper = require('../utils/controllerHelper');
 
 module.exports = {
     getQueue: async (req, res) => {

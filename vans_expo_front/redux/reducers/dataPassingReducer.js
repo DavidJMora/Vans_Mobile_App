@@ -10,7 +10,6 @@ import {
 const initialState = {
   //* queue will be where list for product will be stored and manipulated based on action.
   queue: [],
-  queueId: "",
   //* for later when we send messages back based on button selected from stock
   notifications: {
     key: "blue"
@@ -22,7 +21,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         queue: action.payload.items,
-        queueId: action.payload._id
       };
 
     case UPDATE_STOCK_LIST:
