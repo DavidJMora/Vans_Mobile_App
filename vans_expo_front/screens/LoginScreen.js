@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet, TextInput, Button, Image } from "react-native";
 import { connect } from "react-redux";
 import { login } from "../redux/actions/authUserActions";
 
@@ -56,7 +56,8 @@ class LoginScreen extends Component {
     */
 
     return (
-      <View style={styles.container}>
+      <View style={styles.screen}>
+        <Image source={require("../assets/vansBG.jpg")} />
         <TextInput
           name="employee_number"
           value={this.state.loginForm.employee_number}
@@ -102,7 +103,4 @@ const mapStateToProps = state => {
     authUser: state.authUser
   };
 };
-export default connect(
-  mapStateToProps,
-  { login }
-)(LoginScreen);
+export default connect(mapStateToProps, { login })(LoginScreen);

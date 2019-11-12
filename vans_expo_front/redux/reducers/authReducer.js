@@ -9,7 +9,6 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case AUTH_LOGIN_SUCCESSFUL:
-  
       return {
         isAuthenticated: true,
         user: payload

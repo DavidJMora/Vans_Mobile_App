@@ -4,7 +4,7 @@ import { Text } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import DashboardScreen from "../screens/DashboardScreen";
+// import DashboardScreen from "../screens/DashboardScreen";
 import Notifications from "../screens/Notifications";
 import LoginScreen from "../screens/LoginScreen";
 import Admin from "../screens/Admin";
@@ -12,7 +12,7 @@ import Floor from "../screens/Floor";
 import Stock from "../screens/Stock";
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
-import Icon from "@expo/vector-icons";
+// import Icon from "@expo/vector-icons";
 
 /** https://docs.expo.io/versions/latest/guides/icons/#expovector-icons **/
 
