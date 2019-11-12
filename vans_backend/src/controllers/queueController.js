@@ -15,22 +15,28 @@ module.exports = {
         }
     },
     addProductToQueue: async (req, res) => {
-        let { productID, queueID } = req.params;
+        let { productID } = req.params;
 
         try {
             let product = await Product.findById({_id: productID});
 
-            let newProduct = await controllerHelper.createTempProduct(product, req.body);
-            let queue = await Queue.findById({_id: queueID})
+            product.size = req.body.size.toString();
+            product.user.sentBy = req.body.user.sentBy;
+            product.user.receivedBy = req.body.user.receivedBy;
             
-            await queue.items.push(newProduct);
+            let queue = await Queue.find({})
+            
+            await queue[0].items.push(product);
 
-            await queue.save();
+            await queue[0].save();
 
             res.status(200).json(queue)
         } catch (error) {
             console.log(error);
             res.status(500).json(error)
         }
+    },
+    removeProductFromQueue: async (req, res) => {
+        
     }
 }

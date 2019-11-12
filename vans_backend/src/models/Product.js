@@ -10,7 +10,7 @@ let ProductSchema = new Schema ({
     product: { type: String, default: '' },
     description: { type: String, default: ''},
     image: { type: String, default: '' },
-    size: { type: Number, default: '' },
+    size: { type: String, default: null },
     user: {
         sentBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
         receivedBy: { type: Schema.Types.ObjectId, ref: 'User', default: null }

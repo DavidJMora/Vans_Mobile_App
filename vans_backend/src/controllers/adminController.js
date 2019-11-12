@@ -16,9 +16,8 @@ module.exports = {
 
             newProduct.shoeStyle = req.params.shoeStyleID;
             newProduct.product = faker.lorem.words();
-            newProduct.description = faker.lorem.sentence();
+            newProduct.description = faker.lorem.words();
             newProduct.image = faker.image.image();
-            newProduct.size = 65;
 
             newProduct.save();
         }
