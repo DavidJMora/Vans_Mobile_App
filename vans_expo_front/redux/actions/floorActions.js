@@ -1,25 +1,16 @@
-/**
+import {
+  GET_STYLES_BY_CATEGORY_ID,
+  SUBMIT_SHOE_REQUEST_BY_ID
+} from "../actionTypes/floorTypes";
 
- // define and declare initial state
- // create reducers with swtich case
+import Axios from "../../services/Axios";
 
-import {  } from "../actionTypes/types";
-
-const initialState = {
-
+export const getStylesByCategoryID = categoryID => async dispatch => {
+  try {
+    let getCategoryStyles = Axios.get(`/${categoryID}`);
+    return Promise.resolve({ getCategoryStyles });
+  } catch (e) {
+    console.log(e);
+    return Promise.reject(e);
   }
 };
-
-export default function(state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case " ":
-      return {
-
-      };
-    default:
-      return state;
-  }
-}
-
-*/

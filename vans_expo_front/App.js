@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-// import { Image, Text, View, StyleSheet } from "react-native";
-
-// import { AppLoading } from "expo";
-import AppContainer from "./navigation/AppNavigation";
-import store from "./redux/store/store";
 import { Provider } from "react-redux";
+import store from "./redux/store/store";
+import AppContainer from "./navigation/AppNavigation";
+
+// import { Apploading } from "expo";
+// import { Asset } from "expo-asset";
+// import { Image, Text, View, StyleSheet } from "react-native";
+// https://docs.expo.io/versions/latest/sdk/asset/
 // import * as Font from "expo-font";
 
 export default class App extends Component {
@@ -18,7 +20,7 @@ export default class App extends Component {
 }
 
 // state = {
-//   fontLoaded: false
+//   fontLoaded: falser
 // };
 
 // async componentDidMount() {
