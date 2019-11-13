@@ -28,9 +28,11 @@ class FloorScreen extends Component {
 
   componentDidMount() {}
 
-  handleOnSubmit = () => {};
+  handleGetCategory = () => {};
+  handleGetStyle = () => {};
+  handleGetProduct = () => {};
+  handleSendToStock = () => {};
 
-  someFunction = () => {};
 
   render() {
     
@@ -46,6 +48,21 @@ class FloorScreen extends Component {
               receivedBy: "5dc1b98f20ada9e222c66a5f"
             }
           }})}
+        />
+         <Button
+          title={"ADULTS"}
+          style={styles.input}
+          onPress={this.handleGetCategory}
+        />
+         <Button
+          title={"Kids"}
+          style={styles.input}
+          onPress={this.handleGetCategory}
+        />
+         <Button
+          title={"Toddlers"}
+          style={styles.input}
+          onPress={this.handleGetCategory}
         />
       </View>
     );
