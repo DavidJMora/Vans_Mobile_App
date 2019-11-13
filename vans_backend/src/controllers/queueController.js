@@ -2,6 +2,7 @@ let Queue = require('../models/Queue');
 let ShoeStyle = require('../models/ShoeStyle');
 module.exports = {
     getQueue: async (req, res) => {
+        console.log('why are you being called so much')
         try {
             let queue = await Queue.find({})
             console.log(queue)
@@ -13,7 +14,7 @@ module.exports = {
     },
     addProductToQueue: async (req, res) => {
         
-        let { size, user, color, categoryName } = req.body;
+        let { size, user, color, categoryName } = req.body.data;
         let { productID } = req.params;
         
         try {

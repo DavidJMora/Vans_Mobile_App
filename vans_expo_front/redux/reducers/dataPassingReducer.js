@@ -25,7 +25,6 @@ export default function(state = initialState, action) {
       };
 
     case ADD_TO_QUEUE:
-      console.log(action.payload);
       let newQueue = [...state.queue, action.payload];
       return {
         ...state,

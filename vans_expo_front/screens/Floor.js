@@ -45,12 +45,14 @@ class FloorScreen extends Component {
         <Text> Floor Screen </Text>
         <Button
           title='Add Fake Stock'
-          onPress={() => this.props.addToQueue({productID: '5dcc72222e919b857480e8bd'}, {data: {
+          onPress={() => this.props.addToQueue({productID: '5dcc72272e919b857480e8be'}, {data: {
             size: "9",
             user: {
               sentBy: "5dc1b8e520ada9e222c66a5b",
               receivedBy: "5dc1b98f20ada9e222c66a5f"
-            }
+            },
+            categoryName: "Kids",
+            color: "blue"
           }})}
         />
         <Button

@@ -53,14 +53,14 @@ class StockScreen extends Component {
         <Card title='Shoes On Queue'>
           {
             this.state.queue.map((card, index) => {
-              
+              let { categoryName, shoeStyle, color } = card
               let cardString = card.size.toString();
               let indexPoop = index + 1
               return (
                 <ListItem
                   key={index}
-                  title={card.description}
-                  leftAvatar={{ source: {uri: card.image}}}
+                  title={`${categoryName} ${shoeStyle} ${color}`}
+                  leftAvatar={{ source: {uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}}
                   subtitle={cardString}
                   leftSubtitle={indexPoop.toString()}
                   bottomDivider
