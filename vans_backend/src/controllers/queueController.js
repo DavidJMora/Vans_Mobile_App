@@ -13,6 +13,7 @@ module.exports = {
         }
     },
     addProductToQueue: async (req, res) => {
+        console.log(req.body.data, 'body', req.params.productID, 'params')
         let { data } = req.body;
         let { productID } = req.params;
         

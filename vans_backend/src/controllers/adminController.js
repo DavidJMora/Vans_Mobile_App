@@ -8,6 +8,7 @@ let Queue = require('../models/Queue');
 //* All Methods here are to be used with Postman and Atlas in order to save time on frontend
 
 module.exports = {
+    //No longer in use
     createProduct: (req, res) => {
         
         for(let i = 0; i < 25; i++) {
@@ -24,12 +25,13 @@ module.exports = {
 
             res.json('25 Products Created')
     },
+    // Now takes in modified data from individual product
     createShoeStyle: (req, res) => {
-
+        
         let newShoeStyle = new ShoeStyle();
 
         newShoeStyle.shoeStyle = req.body.shoeStyle;
-        newShoeStyle.category = req.params.categoryID;
+        newShoeStyle.categoryID = req.params.categoryID;
 
         newShoeStyle.save();
 
