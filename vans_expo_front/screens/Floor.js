@@ -25,13 +25,14 @@ import { addToQueue } from '../redux/actions/dataPassingActions';
 import { getAllCategories } from '../redux/actions/floorActions';
 
 class FloorScreen extends Component {
-  state = {};
+  state = {
+    submitform: {}
+  };
 
   componentDidMount() {
     this.props.getAllCategories();
   }
 
-  handleGetCategory = () => {};
   handleGetStyle = () => {};
   handleGetProduct = () => {};
   handleSendToStock = () => {};
@@ -58,12 +59,12 @@ class FloorScreen extends Component {
           onPress={this.handleGetCategory}
         />
          <Button
-          title={"Kids"}
+          title={"KIDS"}
           style={styles.input}
           onPress={this.handleGetCategory}
         />
          <Button
-          title={"Toddlers"}
+          title={"TODDLERS"}
           style={styles.input}
           onPress={this.handleGetCategory}
         />

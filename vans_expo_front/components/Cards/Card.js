@@ -1,0 +1,6 @@
+state = {
+    submitShoeForm: {
+        color: "",
+        size: "",
+    }
+}
