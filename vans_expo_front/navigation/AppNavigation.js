@@ -21,7 +21,7 @@ import Stock from "../screens/Stock";
 
 // drawer stack
 
-const DashboardTabNavigator = createBottomTabNavigator(
+const BottomTabNavigator = createBottomTabNavigator(
   {
     Admin,
     Floor,
@@ -37,12 +37,13 @@ const DashboardTabNavigator = createBottomTabNavigator(
     }
   }
 );
-const DashboardStackNavigator = createStackNavigator(
+const BottomStackNavigator = createStackNavigator(
   {
-    DashboardTabNavigator: DashboardTabNavigator
+    BottomTabNavigator: BottomTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
+
       return {
         headerLeft: (
           <Text
@@ -59,8 +60,19 @@ const DashboardStackNavigator = createStackNavigator(
 
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
-    screen: DashboardStackNavigator
+    screen: BottomTabNavigator
+  },
+  Adults: {
+    screen: BottomTabNavigator
+  },
+  Kids: {
+    screen: BottomTabNavigator
+  },
+  Toddlers: {
+    screen: BottomTabNavigator
   }
+  
+
 });
 
 const AppSwitchNavigator = createSwitchNavigator({
