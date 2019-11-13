@@ -4,18 +4,20 @@ import {
   GET_SHOES_BY_SHOESTYLE_ID,
 } from "../actionTypes/floorTypes";
 
-initialState = {
-  adult: {
-    
-  }
+category = {
+  categoryId: [],
+  adult: [],
+  kids: [],
+  toddlers: []
 }
 
-export default function(state = initialState, action) {
+export default function(state = category, action) {
   switch(action.type) {
     case GET_ALL_CATERGORIES:
+      console.log(action.payload, 'payload')
+      console.log('------')
       return {
         ...state,
-
       }
 
     default:

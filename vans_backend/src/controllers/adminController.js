@@ -26,16 +26,24 @@ module.exports = {
             res.json('25 Products Created')
     },
     // Now takes in modified data from individual product
-    createShoeStyle: (req, res) => {
-        
+    createShoeStyle: async (req, res) => {
+        // console.log(req.params.categoryID)
         let newShoeStyle = new ShoeStyle();
-
+        
+        let category = await Category.findById({_id: req.params.categoryID})
+        
         newShoeStyle.shoeStyle = req.body.shoeStyle;
-        newShoeStyle.categoryID = req.params.categoryID;
-
+        newShoeStyle.category.categoryID = category._id;
+        newShoeStyle.category.categoryName = category.categoryName;
+        // console.log(newShoeStyle)
         newShoeStyle.save();
 
-        res.json('ShoeStyle Created')
+        res.json({
+            message: 'shoeStyle created',
+            data: {
+                newShoeStyle
+            }
+        })
 
 
     },
@@ -43,7 +51,7 @@ module.exports = {
         
         let newCategory = new Category();
 
-        newCategory.category = req.body.category;
+        newCategory.categoryName = req.body.categoryName;
 
         newCategory.save();
 

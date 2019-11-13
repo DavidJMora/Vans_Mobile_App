@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let ShoeStyleSchema = new Schema({
-    categoryID: { 
-        type: Schema.Types.ObjectId, ref: 'Category'
+    category: { 
+        categoryID: { type: Schema.Types.ObjectId, ref: 'Category' },
+        categoryName: { type: String, default: '' }
     },
-    categoryName: { type: String, default: '' },
     shoeStyle: { type: String, default: '' },
     color: { type: String, default: ''},
     image: { type: String, default: '' },

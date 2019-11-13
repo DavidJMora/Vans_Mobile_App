@@ -13,14 +13,13 @@ module.exports = {
     },
     addProductToQueue: async (req, res) => {
         
-        let { size, user, color, categoryName } = req.body.data;
+        let { size, user, color } = req.body.data;
         let { productID } = req.params;
         
         try {
             let product = await ShoeStyle.findById({_id: productID});
             product.size = size.toString();
             product.color = color;
-            product.categoryName = categoryName;
             product.user.sentBy = user.sentBy;
             product.user.receivedBy = user.receivedBy;
             

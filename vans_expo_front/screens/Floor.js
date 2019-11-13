@@ -30,7 +30,8 @@ class FloorScreen extends Component {
   };
 
   componentDidMount() {
-    this.props.getAllCategories();
+    let categories = this.props.getAllCategories();
+    console.log(categories)
   }
 
   handleGetStyle = () => {};

@@ -4,8 +4,10 @@ const moment = require('moment');
 
 let QueueSchema = new Schema({
     items: [{
-        categoryID: { type: Schema.Types.ObjectId, ref: 'Category' },
-        categoryName: { type: String, default: '' },
+        category: {
+            categoryID: { type: Schema.Types.ObjectId, ref: 'Category' },
+            categoryName: { type: String, default: '' }
+        },
         shoeStyle: { type: String, default: '' },
         color: { type: String, default: ''},
         image: { type: String, default: '' },
