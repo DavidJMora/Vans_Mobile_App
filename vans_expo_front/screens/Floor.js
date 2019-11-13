@@ -22,11 +22,14 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { connect } from 'react-redux'
 import { addToQueue } from '../redux/actions/dataPassingActions';
+import { getAllCategories } from '../redux/actions/floorActions';
 
 class FloorScreen extends Component {
   state = {};
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getAllCategories();
+  }
 
   handleOnSubmit = () => {};
 
@@ -63,11 +66,12 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
 
   return {
-    passedData: state.passedData
+    passedData: state.passedData,
+    floorInfo: state.floorData
   };
 };
 
-export default connect(mapStateToProps, { addToQueue })(FloorScreen);
+export default connect(mapStateToProps, { addToQueue, getAllCategories })(FloorScreen);
 /**
  *  floorscreen =>
  *
