@@ -2,10 +2,9 @@ let Queue = require('../models/Queue');
 let ShoeStyle = require('../models/ShoeStyle');
 module.exports = {
     getQueue: async (req, res) => {
-        console.log('why are you being called so much')
         try {
             let queue = await Queue.find({})
-            console.log(queue)
+            
             res.status(200).json(queue[0].items)
         } catch (error) {
             console.log(error);
