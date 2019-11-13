@@ -25,13 +25,14 @@ import { addToQueue } from '../redux/actions/dataPassingActions';
 import { getAllCategories } from '../redux/actions/floorActions';
 
 class FloorScreen extends Component {
-  state = {};
+  state = {
+    submitform: {}
+  };
 
   componentDidMount() {
     this.props.getAllCategories();
   }
 
-  handleGetCategory = () => {};
   handleGetStyle = () => {};
   handleGetProduct = () => {};
   handleSendToStock = () => {};

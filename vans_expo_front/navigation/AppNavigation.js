@@ -49,7 +49,6 @@ const BottomStackNavigator = createStackNavigator(
           <Text
             style={{ paddingLeft: 10 }}
             onPress={() => navigation.openDrawer()}
-            name="md-menu"
             size={30}
           />
         )
@@ -57,23 +56,22 @@ const BottomStackNavigator = createStackNavigator(
     }
   }
 );
-
-const AppDrawerNavigator = createDrawerNavigator({
-  Dashboard: {
-    screen: BottomTabNavigator
-  },
-  Adults: {
-    screen: BottomTabNavigator
-  },
-  Kids: {
-    screen: BottomTabNavigator
-  },
-  Toddlers: {
-    screen: BottomTabNavigator
-  }
+/*
+for category sidemenu buttons 
+onpress={
+  () => ** " toggle modal"
+} 
+*/
+const AppDrawerNavigator = createDrawerNavigator({ 
   
-
-});
+  Dashboard: {
+      screen: BottomStackNavigator
+    },
+  Adults: {screen: Floor},
+  Kids: {screen: Floor},
+  Toddlers: {screen: Floor}
+  
+  });
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
