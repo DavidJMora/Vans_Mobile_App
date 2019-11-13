@@ -5,7 +5,9 @@ import {
 } from "../actionTypes/floorTypes";
 
 initialState = {
-  catergories: []
+  adult: {
+    
+  }
 }
 
 export default function(state = initialState, action) {

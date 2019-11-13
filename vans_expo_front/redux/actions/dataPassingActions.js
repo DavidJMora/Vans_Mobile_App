@@ -27,7 +27,7 @@ export const getQueue = () => async dispatch => {
 export const addToQueue = (product, data) => async dispatch => {
     try {
         let addedProduct = await Axios.post(`/queue/add-product-to-queue/${product.productID}`, data);
-        
+
         dispatch({
             type: ADD_TO_QUEUE,
             payload: addedProduct.data

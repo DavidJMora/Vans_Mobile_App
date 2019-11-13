@@ -23,6 +23,7 @@ module.exports = {
             res.status(500).json(error)
         }
     },
+    // No longer used
     getProductById: async(req, res) => {
         const id = req.params.shoeStyleID;
 

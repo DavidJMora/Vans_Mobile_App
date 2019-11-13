@@ -1,6 +1,7 @@
+// No longer necessary. Combined with the shoeStyle Schema
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const moment = require('moment');
 
 let ProductSchema = new Schema ({
     shoeStyle: {
@@ -15,7 +16,6 @@ let ProductSchema = new Schema ({
         sentBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
         receivedBy: { type: Schema.Types.ObjectId, ref: 'User', default: null }
     },
-    timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')}
 })
 
 module.exports = mongoose.model('Product', ProductSchema)
