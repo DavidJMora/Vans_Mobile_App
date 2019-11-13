@@ -1,6 +1,5 @@
 let Queue = require('../models/Queue');
-let Product = require('../models/Product');
-
+let ShoeStyle = require('../models/ShoeStyle');
 module.exports = {
     getQueue: async (req, res) => {
         try {
@@ -13,16 +12,18 @@ module.exports = {
         }
     },
     addProductToQueue: async (req, res) => {
-        console.log(req.body.data, 'body', req.params.productID, 'params')
-        let { data } = req.body;
+        
+        let { size, user, color, categoryName } = req.body;
         let { productID } = req.params;
         
         try {
-            let product = await Product.findById({_id: productID});
-
-            product.size = data.size.toString();
-            product.user.sentBy = data.user.sentBy;
-            product.user.receivedBy = data.user.receivedBy;
+            let product = await ShoeStyle.findById({_id: productID});
+            product.size = size.toString();
+            product.color = color;
+            product.categoryName = categoryName;
+            product.user.sentBy = user.sentBy;
+            product.user.receivedBy = user.receivedBy;
+            
             
             let queue = await Queue.find({})
             
