@@ -4,12 +4,13 @@ import {
   DELETE_ITEM_FROM_LIST,
   COMPLETE_ITEM_FROM_LIST,
   NO_STOCK_FOR_ITEM,
-  LAST_STOCK_FOR_ITEM
+  LAST_STOCK_FOR_ITEM,
+  ADD_TO_QUEUE
 } from "../actionTypes/dataPassingTypes";
 
 const initialState = {
   //* queue will be where list for product will be stored and manipulated based on action.
-  queue: [],
+  queue: null,
   //* for later when we send messages back based on button selected from stock
   notifications: {
     key: "blue"
@@ -20,10 +21,11 @@ export default function(state = initialState, action) {
     case GET_STOCK_LIST:
       return {
         ...state,
-        queue: action.payload.items,
+        queue: action.payload,
       };
 
-    case UPDATE_STOCK_LIST:
+    case ADD_TO_QUEUE:
+      console.log(action.payload);
       let newQueue = [...state.queue, action.payload];
       return {
         ...state,

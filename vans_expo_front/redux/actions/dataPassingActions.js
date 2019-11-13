@@ -1,27 +1,41 @@
-import { GET_STOCK_LIST, UPDATE_STOCK_LIST, DELETE_ITEM_FROM_LIST, COMPLETE_ITEM_FROM_LIST, NO_STOCK_FOR_ITEM, LAST_STOCK_FOR_ITEM } from '../actionTypes/dataPassingTypes';
+import { GET_STOCK_LIST, 
+    UPDATE_STOCK_LIST, 
+    DELETE_ITEM_FROM_LIST, 
+    COMPLETE_ITEM_FROM_LIST, 
+    NO_STOCK_FOR_ITEM, 
+    LAST_STOCK_FOR_ITEM, 
+    ADD_TO_QUEUE } from '../actionTypes/dataPassingTypes';
 import Axios from '../../services/Axios';
 
 export const getQueue = () => async dispatch => {
     
     try {
         let retrievedQueue = await Axios.get('/queue/get-queue');
-    
+        // console.log(JSON.stringify(retrievedQueue.data))
         dispatch({
             type: GET_STOCK_LIST,
-            payload: retrievedQueue.data[0]
+            payload: retrievedQueue.data
         })
-        return Promise.resolve(retrievedQueue.data[0].items)
     } catch (error) {
         console.log(error);
-        return Promise.reject(error)
+        //*create universal error reducer 
     }
 
 }
 
-export const updateStockList = (data) => dispatch => {
-    // console.log(data, 'dataPassingAction line 20')
-    dispatch({
-        type: UPDATE_STOCK_LIST,
-        payload: data
-    })
+export const addToQueue = (product, data) => async dispatch => {
+    console.log(product)
+    console.log(data)
+    try {
+        let addedProduct = await Axios.post(`/queue/add-product-to-queue/${product.productID}`, data);
+        console.log(addedProduct)
+        dispatch({
+            type: ADD_TO_QUEUE,
+            payload: addedProduct.data
+        })
+
+    } catch (error) {
+        console.log(error);
+        //* create universal error reducer 
+    }
 }

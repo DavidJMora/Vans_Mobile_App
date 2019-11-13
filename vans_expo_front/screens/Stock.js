@@ -31,53 +31,48 @@ class StockScreen extends Component {
 
   componentDidMount() {
     this.props.getQueue()
-    .then( queue => {
-      // console.log(queue, 'stock line 36')
-      this.setState({
-        queue: queue
-      })
-      // console.log(this.props, 'line 33')
-        // console.log(this.state, 'line 40')
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      // console.log(this.state.queue, 'line 45')
-    // console.log(this.props.getQueue(), 'stock line 42')
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevState, 'prevState')
-    console.log(prevProps, 'prevProps')
+    // console.log('------')
+    // console.log(this.props.passedData.queue)
     if(prevProps.passedData.queue !== this.props.passedData.queue) {
-      console.log("hello you've made it")
-      // console.log(prevProps.passedData.queue)
-      // console.log(this.state.queue)
+      // console.log('YEEET')
+      this.setState({
+        queue: this.props.passedData.queue
+      })
     }
   }
 
   render() {
-
-    let queueCards = (
-      <Card title='Shoes On Queue'>
-        {
-          this.state.queue.map((card, index) => {
-            // {console.log(card, index, 'line 64')}
-            // {console.log(this.state.queue, 'line 66')}
-            {console.log(card.size, 'line 67 stock')}
-            return (
-              <ListItem
-                key={index}
-                title={card.description}
-                leftAvatar={{ source: {uri: card.image}}}
-                subtitle={card.size.toString()}
-                bottomDivider
-              />
-            );
-          })
-        }
-      </Card>
-    )
+    let queueCards;
+    if (this.state.queue.length > 0) {
+      // console.log('0000000')
+      // console.log(JSON.stringify(this.state.queue))
+      queueCards = (
+        <Card title='Shoes On Queue'>
+          {
+            this.state.queue.map((card, index) => {
+              
+              let cardString = card.size.toString();
+              let indexPoop = index + 1
+              return (
+                <ListItem
+                  key={index}
+                  title={card.description}
+                  leftAvatar={{ source: {uri: card.image}}}
+                  subtitle={cardString}
+                  leftSubtitle={indexPoop.toString()}
+                  bottomDivider
+                />
+              );
+            })
+          }
+        </Card>
+      )
+    } else {
+      queueCards = null 
+    }
     
     return (
       queueCards

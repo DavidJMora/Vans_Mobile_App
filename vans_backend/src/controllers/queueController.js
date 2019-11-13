@@ -6,29 +6,30 @@ module.exports = {
         try {
             let queue = await Queue.find({})
             console.log(queue)
-            res.status(200).json(queue)
+            res.status(200).json(queue[0].items)
         } catch (error) {
             console.log(error);
             res.status(500).json(error)
         }
     },
     addProductToQueue: async (req, res) => {
+        let { data } = req.body;
         let { productID } = req.params;
-
+        
         try {
             let product = await Product.findById({_id: productID});
 
-            product.size = req.body.size.toString();
-            product.user.sentBy = req.body.user.sentBy;
-            product.user.receivedBy = req.body.user.receivedBy;
+            product.size = data.size.toString();
+            product.user.sentBy = data.user.sentBy;
+            product.user.receivedBy = data.user.receivedBy;
             
             let queue = await Queue.find({})
             
             await queue[0].items.push(product);
 
             await queue[0].save();
-
-            res.status(200).json(queue)
+            
+            res.status(200).json(product)
         } catch (error) {
             console.log(error);
             res.status(500).json(error)
