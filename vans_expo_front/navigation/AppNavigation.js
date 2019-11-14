@@ -48,17 +48,17 @@ const BottomStackNavigator = createStackNavigator(
     defaultNavigationOptions: ({ navigation }) => {
       return {
         headerLeft: (
-          <TouchableOpacity
-            onPress={() => navigation.state.params.handleGetAllCategories()}
-          >
-            <FontAwesome.Button
-              name="resistance"
-              backgroundColor="#ff0000"
-              style={{ paddingLeft: 10 }}
-              onPress={(() => {}, navigation.openDrawer())}
-              size={20}
-            />
-          </TouchableOpacity>
+          // <TouchableOpacity
+          //   onPress={() => navigation.state.params.handleGetAllCategories()}
+          // >
+          <FontAwesome.Button
+            name="resistance"
+            backgroundColor="#ff0000"
+            style={{ paddingLeft: 10 }}
+            onPress={(() => {}, navigation.openDrawer())}
+            size={20}
+          />
+          // </TouchableOpacity>
         )
       };
     }
