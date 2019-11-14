@@ -1,6 +1,7 @@
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { Text } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { Button, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -9,7 +10,7 @@ import Notifications from "../screens/Notifications";
 import LoginScreen from "../screens/LoginScreen";
 import Admin from "../screens/Admin";
 import Floor from "../screens/Floor";
-import Stock from "../screens/Stock";
+import Queue from "../screens/Stock";
 /** https://reactnavigation.org/docs/en/tab-based-navigation.html */
 
 // import Icon from "@expo/vector-icons";
@@ -22,10 +23,11 @@ import Stock from "../screens/Stock";
 // drawer stack
 
 const BottomTabNavigator = createBottomTabNavigator(
+  // assign tabs
   {
     Admin,
     Floor,
-    Stock,
+    Queue,
     Notifications
   },
   {
@@ -38,40 +40,45 @@ const BottomTabNavigator = createBottomTabNavigator(
   }
 );
 const BottomStackNavigator = createStackNavigator(
+  // stack the tabs
   {
     BottomTabNavigator: BottomTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
-
       return {
         headerLeft: (
-          <Text
-            style={{ paddingLeft: 10 }}
-            onPress={() => navigation.openDrawer()}
-            size={30}
-          />
+          <TouchableOpacity
+            onPress={() => navigation.state.params.handleGetAllCategories()}
+          >
+            <FontAwesome.Button
+              name="resistance"
+              backgroundColor="#ff0000"
+              style={{ paddingLeft: 10 }}
+              onPress={(() => {}, navigation.openDrawer())}
+              size={20}
+            />
+          </TouchableOpacity>
         )
       };
     }
   }
 );
 /*
-for category sidemenu buttons 
+for category sidemenu buttons
 onpress={
   () => ** " toggle modal"
-} 
+}
 */
-const AppDrawerNavigator = createDrawerNavigator({ 
-  
+const AppDrawerNavigator = createDrawerNavigator({
+  // items to be stored in drawer or sidemenu
   Dashboard: {
-      screen: BottomStackNavigator
-    },
-  Adults: {screen: Floor},
-  Kids: {screen: Floor},
-  Toddlers: {screen: Floor}
-  
-  });
+    screen: BottomStackNavigator
+  },
+  Adults: { screen: Floor },
+  Kids: { screen: Floor },
+  Toddlers: { screen: Floor }
+});
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },

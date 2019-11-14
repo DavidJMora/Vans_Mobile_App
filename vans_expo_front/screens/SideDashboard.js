@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -14,9 +13,8 @@ export default class SideDashboard extends Component {
   render() {
     return (
       <View>
-        <Text>Hello  </Text>
+        <Text>Hello </Text>
       </View>
     );
   }
 }
-
