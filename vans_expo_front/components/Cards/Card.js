@@ -1,6 +1,0 @@
-state = {
-    submitShoeForm: {
-        color: "",
-        size: "",
-    }
-}
