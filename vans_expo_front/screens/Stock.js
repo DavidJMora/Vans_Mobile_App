@@ -31,14 +31,15 @@ class Stock extends Component {
       // console.log(JSON.stringify(this.state.queue))
       queueCards = (
         <Card title="Shoes On Queue">
-          let {(categoryName, shoeStyle, color)} = card;
           {this.state.queue.map((card, index) => {
+          let {category, shoeStyle, color} = card;
+          
             let cardString = card.size.toString();
             let indexPoop = index + 1;
             return (
               <ListItem
                 key={index}
-                title={`${categoryName} ${shoeStyle} ${color}`}
+                title={`${category.categoryName} ${shoeStyle} ${color}`}
                 leftAvatar={{
                   source: {
                     uri:

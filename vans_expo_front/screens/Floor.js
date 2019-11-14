@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { addToQueue } from "../redux/actions/dataPassingActions";
-import { getAllCategories } from "../redux/actions/floorActions";
+import { getFloorData } from "../redux/actions/floorActions";
 import { ListItem, Card } from "react-native-elements";
 class FloorScreen extends Component {
   state = {

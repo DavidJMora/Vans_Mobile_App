@@ -11,6 +11,7 @@ category = {
 export default function(state = category, action) {
   switch(action.type) {
     case GET_FLOOR_DATA:
+      
       let { categoryName, data } = action.payload;
 
       let key = categoryName;
