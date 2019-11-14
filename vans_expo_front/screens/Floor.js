@@ -23,7 +23,7 @@ class FloorScreen extends Component {
   };
   componentDidMount() {
     this.props.getFloorData().then(() => {
-      console.log(this.props.floorInfo);
+      // console.log(this.props.floorInfo);
       // console.log(this.props.floorInfo.Kids);
       // console.log(this.props.floorInfo.Toddlers);
     });
@@ -37,9 +37,7 @@ class FloorScreen extends Component {
     return (
       <View style={styles.screen}>
         {list.map((list, i) => (
-          <TouchableOpacity onPress={() => this.toggleModal}>
-            <ListItem key={i} title={list[i]} bottomDivider />
-          </TouchableOpacity>
+          <Text>blue</Text>
         ))}
       </View>
     );

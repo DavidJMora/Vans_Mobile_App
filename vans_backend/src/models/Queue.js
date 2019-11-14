@@ -9,6 +9,7 @@ let QueueSchema = new Schema({
             categoryID: { type: Schema.Types.ObjectId, ref: 'Category' },
             categoryName: { type: String, default: '' }
         },
+        styleID: { type: Schema.Types.ObjectId, ref: 'ShoeStyle'},
         shoeStyle: { type: String, default: '' },
         color: { type: String, default: ''},
         image: { type: String, default: '' },

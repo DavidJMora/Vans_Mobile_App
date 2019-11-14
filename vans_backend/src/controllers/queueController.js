@@ -3,8 +3,8 @@ let ShoeStyle = require('../models/ShoeStyle');
 module.exports = {
     getQueue: async (req, res) => {
         try {
-            let queue = await Queue.find({})
-            
+            let queue = await Queue.find({});
+        
             res.status(200).json(queue[0].items)
         } catch (error) {
             console.log(error);
@@ -21,6 +21,7 @@ module.exports = {
             product.color = color;
             product.user.sentBy = user.sentBy;
             product.user.receivedBy = user.receivedBy;
+            product.styleID = user._id
             
             
             let queue = await Queue.find({})
