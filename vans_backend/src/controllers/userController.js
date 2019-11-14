@@ -5,6 +5,7 @@ module.exports = {
     userLogin: async (req, res) => {
         try {
             let foundUser = await authHelper.findOneUser(req.body.employee_number)
+            
             if(foundUser === 404) {
                 throw "User not found, please try again."
             }

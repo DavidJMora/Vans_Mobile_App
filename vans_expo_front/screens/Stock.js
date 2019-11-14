@@ -23,7 +23,7 @@ import { connect } from 'react-redux';
 import { getQueue } from '../redux/actions/dataPassingActions';
 import { Card, ListItem } from 'react-native-elements'
 
-class StockScreen extends Component {
+class Stock extends Component {
 
   state = {
     queue: []
@@ -75,9 +75,7 @@ class StockScreen extends Component {
     }
     
     return (
-      <ScrollView>
         queueCards
-      </ScrollView>
     )
   }
 }
@@ -97,4 +95,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getQueue })(StockScreen);
+export default connect(mapStateToProps, { getQueue })(Stock);

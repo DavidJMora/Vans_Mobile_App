@@ -22,7 +22,7 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { connect } from 'react-redux'
 import { addToQueue } from '../redux/actions/dataPassingActions';
-import { getAllCategories } from '../redux/actions/floorActions';
+import { getFloorData } from '../redux/actions/floorActions';
 
 class FloorScreen extends Component {
   state = {
@@ -30,8 +30,12 @@ class FloorScreen extends Component {
   };
 
   componentDidMount() {
-    let categories = this.props.getAllCategories();
-    console.log(categories)
+    this.props.getFloorData()
+        .then(() => {
+          console.log(this.props.floorInfo);
+          // console.log(this.props.floorInfo.Kids);
+          // console.log(this.props.floorInfo.Toddlers);
+        })
   }
 
   handleGetStyle = () => {};
@@ -46,7 +50,7 @@ class FloorScreen extends Component {
         <Text> Floor Screen </Text>
         <Button
           title='Add Fake Stock'
-          onPress={() => this.props.addToQueue({productID: '5dcc72272e919b857480e8be'}, {data: {
+          onPress={() => this.props.addToQueue({productID: '5dcc9593d142d941cf8a4529'}, {data: {
             size: "9",
             user: {
               sentBy: "5dc1b8e520ada9e222c66a5b",
@@ -88,11 +92,11 @@ const mapStateToProps = state => {
 
   return {
     passedData: state.passedData,
-    floorInfo: state.floorData
+    floorInfo: state.floorInfo
   };
 };
 
-export default connect(mapStateToProps, { addToQueue, getAllCategories })(FloorScreen);
+export default connect(mapStateToProps, { addToQueue, getFloorData })(FloorScreen);
 /**
  *  floorscreen =>
  *

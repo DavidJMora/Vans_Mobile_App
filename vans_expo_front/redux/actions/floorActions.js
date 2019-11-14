@@ -1,32 +1,29 @@
 import {
   GET_ALL_CATERGORIES,
-  GET_STYLES_BY_CATEGORY_ID,
-  GET_SHOES_BY_SHOESTYLE_ID,
+  GET_FLOOR_DATA,
   SUBMIT_SHOE_REQUEST_BY_ID
 } from "../actionTypes/floorTypes";
 
 import Axios from "../../services/Axios";
 
-export const getAllCategories = () => async dispatch => {
+export const getFloorData = () => async dispatch => {
   try {
+    // Make first axios call to pull category data
     let allCategories = await Axios.get('/product/all-categories');
-    
-    dispatch({
-      type: GET_ALL_CATERGORIES,
-      payload: allCategories.data
-    })
+    // Deconstruct to pull object from array
+    let { data } = allCategories;
+    // For of loop that pull _id from each category and dynamically places it into next axios call which returns an array of objects with matching category id
+    for( let { _id } of data ) {
+      let filteredShoeStyle = await Axios.get(`/product/all-shoe-styles-by-categoryID/${_id}`);
+
+      dispatch({
+        type: GET_FLOOR_DATA,
+        payload: filteredShoeStyle.data
+      })
+    }
+  
   } catch (error) {
     console.log(error);
-
+    console.log("You didn't send the right information, dumbass")
   }
 }
-
-export const getStylesByCategoryID = categoryID => async dispatch => {
-  try {
-    let getCategoryStyles = await Axios.get(`/${categoryID}`);
-    
-  } catch (error) {
-    console.log(error);
-    // No need for promises. We will have a universal error handler
-  }
-};
