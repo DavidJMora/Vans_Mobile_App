@@ -18,7 +18,7 @@
 // });
 // export default StockScreen;
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, ScrollView } from "react-native";
 import { connect } from 'react-redux';
 import { getQueue } from '../redux/actions/dataPassingActions';
 import { Card, ListItem } from 'react-native-elements'
@@ -75,7 +75,9 @@ class StockScreen extends Component {
     }
     
     return (
-      queueCards
+      <ScrollView>
+        queueCards
+      </ScrollView>
     )
   }
 }

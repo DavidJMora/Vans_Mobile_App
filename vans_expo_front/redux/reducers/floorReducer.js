@@ -5,7 +5,6 @@ import {
 } from "../actionTypes/floorTypes";
 
 category = {
-  categoryId: [],
   adult: [],
   kids: [],
   toddlers: []

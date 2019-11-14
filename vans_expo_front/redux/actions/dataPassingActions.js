@@ -18,7 +18,7 @@ export const getQueue = () => async dispatch => {
             payload: retrievedQueue.data
         })
     } catch (error) {
-        console.log(error);
+        console.log(error, "You sure you know what you're doing?");
         //*create universal error reducer 
     }
 
@@ -34,7 +34,7 @@ export const addToQueue = (product, data) => async dispatch => {
         })
 
     } catch (error) {
-        console.log(error);
+        console.log(error, "You've made a mistake somewhere, YO.");
         //* create universal error reducer 
     }
 }
