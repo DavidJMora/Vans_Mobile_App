@@ -30,15 +30,17 @@ class Queue extends Component {
 
   renderItem = ({ item }) => {
     console.log(item, 'what are you used for')
+    
+
     return (
       <Card>
         <ListItem
-          avatar={{
+          leftAvatar={{
             source: {
               uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
             }
           }}
-          title={'title'}
+          title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
           subtitle={'subtitle'}
           />
       </Card>
@@ -55,29 +57,7 @@ class Queue extends Component {
           data={this.state.queue}
           renderItem={this.renderItem}
         />
-        // <List>
-        //   <FlatList
-        //     data={this.state.queue}
-        //     renderItem={this.renderRow}
-        //     // <ListItem
-        //       // key={index}
-        //       // title={'hello'}
-        //       // title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
-        //       // leftAvatar={{
-        //       //   source: {
-        //       //     uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
-        //       //   }
-        //       // }}
-        //       // subtitle={`Size: ${cardString}`}
-        //       // leftSubtitle={indexPoop.toString()}
-        //       // containerStyle={{ borderBottomWidth: 0 }}
-        //       // bottomDivider
-        //       // />
-              
-        //   keyExtractor={item => item.queueID}
-        //   // ItemSeparatorComponent={this.renderSeparator}
-        //   />
-        // </List>
+
       );
     } else {
       console.log('i need to render')
@@ -89,42 +69,6 @@ class Queue extends Component {
     }
   }
 
-//   renderSeparator = () => {  
-//     return (  
-//         <View  
-//             style={{  
-//                 height: 1,  
-//                 width: "100%", 
-//                 height: "100%",
-//                 flex: 0
-//             }}  
-//         />  
-//     );  
-// };  
-
-//   render() {
-//     let queueCards;
-//     if (this.state.queue.length > 0) {
-//       console.log(this.state.queue, 'im so tired')
-//       queueCards = ( 
-//         <View>
-//           <FlatList 
-//             data={this.state.queue}
-//             initialNumToRender={this.state.queue.length}
-//             renderItem={({item}) => 
-//               <ListItem item={item}/>
-//           }
-//           keyExtractor={item => item.queueID}
-//           ItemSeparatorComponent={this.renderSeparator}  
-//             />
-//         </View>
-//       );
-//     } else {
-//       queueCards = null;
-//     }
-
-//     return queueCards;
-//   }
 }
 
 const styles = StyleSheet.create({
