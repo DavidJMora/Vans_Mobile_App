@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const moment = require('moment');
+const uuidV4 = require('uuid/v4');
 
 let QueueSchema = new Schema({
     items: [{
@@ -16,7 +17,8 @@ let QueueSchema = new Schema({
             sentBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
             receivedBy: { type: Schema.Types.ObjectId, ref: 'User', default: null }
         },
-        timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')}
+        timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')},
+        queueID: { type: String, default: () => uuidV4()}
     }],
     timestamp: {type: String, default: () => moment().format('dddd, MMMM Do YYYY, kk:mm:ss')}
 })

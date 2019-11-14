@@ -12,8 +12,7 @@ module.exports = {
         }
     },
     addProductToQueue: async (req, res) => {
-        
-        let { size, user, color } = req.body.data;
+        let { size, user, color } = req.body;
         let { productID } = req.params;
         
         try {
