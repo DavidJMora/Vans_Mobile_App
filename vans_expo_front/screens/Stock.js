@@ -19,7 +19,7 @@ class Queue extends Component {
     // console.log('------')
     // console.log(this.props.passedData.queue)
     if (prevProps.passedData.queue !== this.props.passedData.queue) {
-      console.log(this.props.passedData.queue,' what are you')
+      // console.log(this.props.passedData.queue,' what are you')
       this.setState({
         queue: this.props.passedData.queue
       });
@@ -29,9 +29,9 @@ class Queue extends Component {
   keyExtractor = (item) => item.queueID;
 
   renderItem = ({ item }) => {
-    console.log(item, 'what are you used for')
-    
+    // console.log(item, 'what are you used for')
 
+    let shoeSize = item.size.toString()
     return (
       <Card>
         <ListItem
@@ -41,7 +41,7 @@ class Queue extends Component {
             }
           }}
           title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
-          subtitle={'subtitle'}
+          subtitle={`${shoeSize}`}
           />
       </Card>
     )
@@ -50,7 +50,7 @@ class Queue extends Component {
   render() {
     if(this.state.queue.length > 0) {
 
-      console.log(this.state, 'you made it to line 45')
+      // console.log(this.state, 'you made it to line 45')
       return (
         <FlatList
           keyExtractor={this.keyExtractor}
@@ -60,10 +60,10 @@ class Queue extends Component {
 
       );
     } else {
-      console.log('i need to render')
+      // console.log('i need to render')
       return (
         <View>
-          <Text>I suck at coding.</Text>
+          <Text>Waiting For Product from Sales Floor</Text>
         </View>
       )
     }

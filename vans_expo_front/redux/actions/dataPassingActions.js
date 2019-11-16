@@ -11,7 +11,7 @@ export const getQueue = () => async dispatch => {
     
     try {
         let retrievedQueue = await Axios.get('/queue/get-queue');
-        console.log(retrievedQueue.data, 'hello');
+        // console.log(retrievedQueue.data, 'hello');
         // No need for Promise since we are saving data into the reducer
         dispatch({
             type: GET_STOCK_LIST,
