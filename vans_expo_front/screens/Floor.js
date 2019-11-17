@@ -18,7 +18,7 @@ class FloorScreen extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.floorInfo !== this.props.floorInfo) {
       const { key } = this.props.navigation.state;
-      console.log(prevProps, "prevProps");
+      // console.log(prevProps, "prevProps");
       this.setState({
         category: this.props.floorInfo[key]
       });
@@ -40,7 +40,7 @@ class FloorScreen extends Component {
       </Card>
     </TouchableOpacity>
   );
-  _keyExtractor = item => item.id;
+  _keyExtractor = item => item._id;
   render() {
     return (
       <FlatList
