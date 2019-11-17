@@ -19,10 +19,10 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_STOCK_LIST:
-      console.log(action.payload,'you never make it past here')
+      // console.log(action.payload,'you never make it past here')
       return {
         ...state,
-        queue: action.payload,
+        queue: action.payload
       };
 
     case ADD_TO_QUEUE:

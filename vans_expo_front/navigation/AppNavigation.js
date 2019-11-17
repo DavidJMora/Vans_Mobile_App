@@ -55,7 +55,6 @@ const BottomStackNavigator = createStackNavigator(
             name="resistance"
             backgroundColor="#ff0000"
             style={{ paddingLeft: 10 }}
-            onPress={(() => {}, navigation.openDrawer())}
             size={20}
           />
           // </TouchableOpacity>

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Button, FlatList, SafeAreaView } from "react-native";
-import Constants from 'expo-constants';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  FlatList,
+  SafeAreaView
+} from "react-native";
+import Constants from "expo-constants";
 import { connect } from "react-redux";
-import { getQueue } from '../redux/actions/dataPassingActions';
+import { getQueue } from "../redux/actions/dataPassingActions";
 import { Card, ListItem } from "react-native-elements";
 // scrollable list https://facebook.github.io/react-native/docs/sectionlist
 
@@ -26,30 +33,30 @@ class Queue extends Component {
     }
   }
 
-  keyExtractor = (item) => item.queueID;
+  keyExtractor = item => item.queueID;
 
   renderItem = ({ item }) => {
     // console.log(item, 'what are you used for')
 
-    let shoeSize = item.size.toString()
+    let shoeSize = item.size.toString();
     return (
       <Card>
         <ListItem
           leftAvatar={{
             source: {
-              uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+              uri:
+                "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
             }
           }}
           title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
           subtitle={`${shoeSize}`}
-          />
+        />
       </Card>
-    )
-  }
+    );
+  };
 
   render() {
-    if(this.state.queue.length > 0) {
-
+    if (this.state.queue.length > 0) {
       // console.log(this.state, 'you made it to line 45')
       return (
         <FlatList
@@ -57,7 +64,6 @@ class Queue extends Component {
           data={this.state.queue}
           renderItem={this.renderItem}
         />
-
       );
     } else {
       // console.log('i need to render')
@@ -65,10 +71,9 @@ class Queue extends Component {
         <View>
           <Text>Waiting For Product from Sales Floor</Text>
         </View>
-      )
+      );
     }
   }
-
 }
 
 const styles = StyleSheet.create({
