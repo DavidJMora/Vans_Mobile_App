@@ -7,7 +7,7 @@ router.get('/get-queue', queueController.getQueue);
 
 router.post('/add-product-to-queue/:productID', queueController.addProductToQueue)
 
-router.post('/remove-product-from-queue/:productID', queueController.removeProductFromQueue)
+router.delete('/remove-product-from-queue/:queueID', queueController.removeProductFromQueue)
 
 
 module.exports = router;

@@ -32,6 +32,13 @@ export default function(state = initialState, action) {
         queue: newQueue
       };
 
+    case DELETE_ITEM_FROM_LIST:
+      let updatedQueue = state.queue.filter(item => item.queueID !== action.payload.queueID)
+      return {
+        ...state,
+        queue: updatedQueue
+      };
+
     default:
       return state;
   }

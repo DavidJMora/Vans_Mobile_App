@@ -37,6 +37,26 @@ module.exports = {
         }
     },
     removeProductFromQueue: async (req, res) => {
+        let { queueID } = req.params;
+
+        try {
+            let arrOfQueues = await Queue.find({});
+            let queue = arrOfQueues[0];
+            
+            let product = await queue.items.filter(item => item.queueID === queueID)
+            let newQueue = await queue.items.filter(item => item.queueID !== queueID)
+            
+            queue.items = newQueue;
         
+            await arrOfQueues[0].save()
+            
+            res.status(200).json(product)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json(error)
+        }
     }
 }
+
+
+
