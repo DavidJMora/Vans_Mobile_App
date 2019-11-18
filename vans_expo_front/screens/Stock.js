@@ -26,17 +26,20 @@ class Queue extends Component {
     // console.log(this.props.passedData.queue)
     if (prevProps.passedData.queue !== this.props.passedData.queue) {
       console.log('Theres been a change')
+      console.log(this.props.passedData.queue)
       this.setState({
         queue: this.props.passedData.queue
       });
     }
   }
 
-  keyExtractor = item => item.queueID;
+  keyExtractor = item => {
+    return item.queueID;
+  };
 
   renderItem = ({ item }) => {
     // console.log(item, 'what are you used for')
-
+  
     let shoeSize = item.size.toString();
     return (
       <Card containerStyle={styles.cardStyle}>
@@ -63,12 +66,13 @@ class Queue extends Component {
 
   render() {
     if (this.state.queue !== undefined) {
-      // console.log(this.state, 'you made it to line 45')
+     //console.log(this.state.queue, 'you made it to line 45')
       return (
         <FlatList
           keyExtractor={this.keyExtractor}
           data={this.state.queue}
           renderItem={this.renderItem}
+          extraData={this.state}
         />
       );
     } else {

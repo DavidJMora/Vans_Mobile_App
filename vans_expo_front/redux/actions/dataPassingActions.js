@@ -24,10 +24,11 @@ export const getQueue = () => async dispatch => {
 
 }
 
-export const addToQueue = (product, data) => async dispatch => {
+export const addToQueue = (data) => async dispatch => {
+    
     try {
-        let addedProduct = await Axios.post(`/queue/add-product-to-queue/${product.productID}`, data);
-
+        let addedProduct = await Axios.post(`/queue/add-product-to-queue/${data.id}`, data);
+        
         dispatch({
             type: ADD_TO_QUEUE,
             payload: addedProduct.data
@@ -43,7 +44,7 @@ export const deleteFromQueue = (queueID) => async dispatch => {
 
     try {
         let deletedProduct = await Axios.delete(`/queue/remove-product-from-queue/${queueID}`)
-        
+        // console.log(deletedProduct)
         dispatch({
             type: DELETE_ITEM_FROM_LIST,
             payload: deletedProduct.data

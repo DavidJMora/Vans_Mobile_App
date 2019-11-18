@@ -19,18 +19,15 @@ module.exports = {
             let product = await ShoeStyle.findById({_id: productID});
             product.size = size.toString();
             product.color = color;
-            product.user.sentBy = user.sentBy;
-            product.user.receivedBy = user.receivedBy;
-            product.styleID = user._id
-            
             
             let queue = await Queue.find({})
             
             await queue[0].items.push(product);
 
             await queue[0].save();
-            
-            res.status(200).json(product)
+        
+            let lastItem = queue[0].items[queue[0].items.length-1]
+            res.status(200).json(lastItem)
         } catch (error) {
             console.log(error);
             res.status(500).json(error)

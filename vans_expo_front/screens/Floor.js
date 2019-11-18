@@ -42,11 +42,28 @@ class FloorScreen extends Component {
     if (prevProps.floorInfo !== this.props.floorInfo) {
       const { key } = this.props.navigation.state;
       // console.log(prevProps, "prevProps");
-      console.log(this.state);
+      // console.log(this.state);
       this.setState({
         category: this.props.floorInfo[key]
       });
     }
+  }
+
+  handleSubmit = (data) => {
+    this.setState({
+      ...this.state,
+      modalForm: {
+        ...this.state.modalForm,
+        size: data.size,
+        color: data.color
+      }
+    }, () => this.props.addToQueue(this.state.modalForm)
+                  .then(() => {
+                    this.setState({
+                      modalVisible: false
+                    })
+                  }))
+  
   }
 
   _onSelect = item => {
@@ -57,13 +74,13 @@ class FloorScreen extends Component {
     <Card>
       <ListItem
         onPress={() => {
-          console.log(
-            `==============`,
-            item,
-            `==============`,
-            item._id,
-            `==============`
-          );
+          // console.log(
+          //   `==============`,
+          //   item,
+          //   `==============`,
+          //   item._id,
+          //   `==============`
+          // );
           this.setState({
             modalVisible: true,
             modalForm: {
@@ -113,12 +130,12 @@ class FloorScreen extends Component {
           <View style={{ maginTop: 22 }}>
             <Text>
               {`${this.state.modalForm.id}
-             ${this.state.modalForm.categoryName}
-             ${this.state.modalForm.shoeStyle}`}
+              ${this.state.modalForm.categoryName}
+              ${this.state.modalForm.shoeStyle}`}
             </Text>
             <Button
               title="touch me"
-              onPress={() => this.setState({ modalVisible: false })}
+              onPress={() => this.handleSubmit({size: 11, color: 'blue'})}
             ></Button>
           </View>
         </Modal>
