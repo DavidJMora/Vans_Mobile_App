@@ -38,3 +38,19 @@ export const addToQueue = (product, data) => async dispatch => {
         //* create universal error reducer 
     }
 }
+
+export const deleteFromQueue = (queueID) => async dispatch => {
+
+    try {
+        let deletedProduct = await Axios.delete(`/queue/remove-product-from-queue/${queueID}`)
+        
+        dispatch({
+            type: DELETE_ITEM_FROM_LIST,
+            payload: deletedProduct.data
+        })
+    } catch (error) {
+        console.log(error, 'Somethings gone wrong')
+    }
+}
+
+

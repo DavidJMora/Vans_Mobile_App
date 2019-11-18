@@ -3,14 +3,13 @@ import {
   Text,
   View,
   StyleSheet,
-  Button,
   FlatList,
   SafeAreaView
 } from "react-native";
 import Constants from "expo-constants";
 import { connect } from "react-redux";
-import { getQueue } from "../redux/actions/dataPassingActions";
-import { Card, ListItem } from "react-native-elements";
+import { getQueue, deleteFromQueue } from "../redux/actions/dataPassingActions";
+import { Card, ListItem, Avatar, Button } from "react-native-elements";
 // scrollable list https://facebook.github.io/react-native/docs/sectionlist
 
 class Queue extends Component {
@@ -26,7 +25,7 @@ class Queue extends Component {
     // console.log('------')
     // console.log(this.props.passedData.queue)
     if (prevProps.passedData.queue !== this.props.passedData.queue) {
-      // console.log(this.props.passedData.queue,' what are you')
+      console.log('Theres been a change')
       this.setState({
         queue: this.props.passedData.queue
       });
@@ -40,23 +39,30 @@ class Queue extends Component {
 
     let shoeSize = item.size.toString();
     return (
-      <Card>
-        <ListItem
-          leftAvatar={{
-            source: {
-              uri:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
-            }
-          }}
-          title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
-          subtitle={`${shoeSize}`}
+      <Card containerStyle={styles.cardStyle}>
+        <Avatar 
+          // overlayContainerStyle={{backgroundColor: 'blue'}}
+          rounded
+          size='large'
+          containerStyle={styles.avatarStyle}
+        />
+        <View>
+          <ListItem
+            title={`${item.category.categoryName} ${item.shoeStyle} ${item.color}`}
+            subtitle={`${shoeSize}`}
+            style={styles.textStyle}
+          />
+        </View>
+        <Button 
+          title='Complete Item'
+          onPress={() => {this.props.deleteFromQueue(item.queueID)}}
         />
       </Card>
     );
   };
 
   render() {
-    if (this.state.queue.length > 0) {
+    if (this.state.queue !== undefined) {
       // console.log(this.state, 'you made it to line 45')
       return (
         <FlatList
@@ -81,6 +87,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  cardStyle: {
+    flexDirection: "row",
+    alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderRadius: 8,
+    flexWrap: 'nowrap'
+  },
+  avatarStyle: {
+    borderColor: 'green',
+    borderWidth: 2,
+    borderStyle: 'solid'
+  },
+  textStyle: {
+    borderColor: 'blue',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    width: 450,
+    display: 'flex'
   }
 });
 
@@ -90,4 +117,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getQueue })(Queue);
+export default connect(mapStateToProps, { getQueue, deleteFromQueue })(Queue);
